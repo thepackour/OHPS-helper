@@ -1,0 +1,331 @@
+지금 나오는 브금 : 카멜리아 신규 앨범(Chimera Dragons) 셔플
+
+[OHPS 살리기 프로젝트]
+1. 얼접한 제작자 맵 교체
+2. 허가 받아와야 하는 제작자 정리
+3. 맵 사용 허가 받아오기
+4. Assemble! (Easy) Tojita Sekai 파트 나누기
+4. 디코봇 점검
+5. 운영 재개 선언
+
+
+[교체한 맵]
+* Peaceful & Healing
+Ssimille - adofaization (Ara) (15 EXP)
+-> Qyubey - humanity (hotduck + kernby) (20 EXP)
+
+* Swingggg
+Plum - Sweet Pink House (Team Qse) (55 EXP)
+-> iTIC - Triple Sec (Pharah) (65 EXP)
+
+* Assemble! (Easy)
+픽애퍼 이름 대소문자 수정
+XNOR XNOR XNOR 제작자 이름 변경
+검은여우 -> Felix
+Camellia - Together forever, my lovely lovely video game cartridges (Team XNOR) (80 EXP)
+-> Camellia - Tojita Sekai (PLORALD) (100 EXP)
+
+* Gimmicks!
+Plum - 비밀 인형극 II (MaySnow) (90 EXP)
+-> AZALI - CHAOS CONTROL (Keqi) (70 EXP)
+
+* Introduction To 4K
+After School 제작자 이름 변경
+pixelo3o -> pixxy
+
+* Nice 2 Meet You!
+Cansol - 1,2,3,4! (Team BGA) (120 EXP)
+-> E0ri4 - Rainy Gate (Simple) (130 EXP)
+5-x The Midnight Train but it included all the sounds (길냥) (100 EXP)
+-> LeaF - MARENOL (Ssimille) (110 EXP)
+Polymath9 - Etude -Sunset- (Simple) (KanoKaz & HanB) (140 EXP)
+-> Plum - Skyscape (Strode) (100 EXP)
+
+* milliONE PurePerfect
+Camellia - LORELEI (Jo Future & Irin & Bingsu) (160 EXP)
+-> Polymath9 - la nuit de vif (130 EXP)
+LeaF - Alice in misanthrope (Team Vega) (180 EXP)
+-> Cansol - Party of spirits (NumbEr07) (140 EXP)
+맵 대부분 경험치 조정
+
+* No Limit to 3K
+올클리어 보상 수정 (450 -> 700)
+
+* wBiEeArTd
+meganeko - Monolith (Hu Man_) (210 EXP)
+-> KAERRA - Five Forgotten Stars (KAERRA + kernby) (170 EXP)
+Plum - Melted Snow (seeker & Dafikun) (240 EXP)
+-> False Noise - Shiver (PLORALD) (250 EXP)
+Frums - Jam with Pancake (Clockwork) (230 EXP)
+-> (Nephrolepis & 다밍) (180 EXP)
+맵 대부분 경험치 조정
+올클리어 보상 수정(380 -> 560)
+
+* Assemble! (Hard)
+맵, 경험치 전부 교체함
+
+* Way To Reach ZENITH
+Camellia - S.A.T.E.L.L.I.T.E. (폐브 & b b) (250 EXP)
+-> Kobaryo - Heaven's Gateway (V0W4N & GamingGooseTV) (290 EXP)
+Frums - Pictured as Perfect (fsxwar) (220 EXP)
+-> Camellia - S.A.T.E.L.L.I.T.E. (폐브 & b b) (240 EXP)
+Light Years Away 제작자 이름 수정
+pixelo3o -> pixxy
+경험치 전부 수정
+올클리어 보상 수정 (360 -> 600)
+
+* Little Fast Levels
+ARForest - The Last Page (Goyeetroll) (270 EXP)
+-> ARForest - The Last Page (피엘리스 Fielis) (270 EXP)
+meganeko - nano love (RedCRP) (320 EXP)
+-> kanemiko - comet casting capsule (Nephrolepis) (300 EXP)
+경험치 전부 수정
+올클리어 보상 수정 (570 -> 880)
+
+* iron tABLE
+Frums - 19ZZ (Team Zeta) (370 EXP)
+-> seatrus - Cheating House (연석이2) (450 EXP)
+경험치 전부 수정
+올클리어 보상 수정 (800 -> 1800)
+
+
+[제작자 허가]
+Editor AlriC (P)
+- Riya - Polygons (remaster) (https://youtu.be/7cH3sfWkTIU)
+- ARForest - Antique (https://youtu.be/DjdgseBZbos)
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+- Lime - Chronomia (Nerfed) (https://youtu.be/2-RWHO1tPdk)
+- Frums - 24eeev0-$ (https://youtu.be/M0pDs4QHKPQ)
+
+Ssimille (P)
+- Riya - Intruder (https://youtu.be/NqIOST3zAmc)
+- LeaF - MARENOL (https://youtu.be/VwxpLbk5sCo)
+- LeaF - Evanescent (https://youtu.be/TMmozukaNf8)
+
+Rikri (P)
+- Nate Harrell - Jazz Candy VIP (https://youtu.be/OXYYBKjnuH0)
+
+plo
+- ARForest - Antique (https://youtu.be/DjdgseBZbos)
+
+Team P.A.L (아키즈코라) (P)
+- しゃろう - 3:03 PM (https://youtu.be/IrT9qbjOiUY) (+ 본인 혼자 만든 맵 맞는지)
+
+hotduck (A)
+- Qyubey - humanity (https://youtu.be/1HeEf_vzBfo)
+
+kernby (A)
+- Qyubey - humanity (https://youtu.be/1HeEf_vzBfo)
+- KAERRA - FIve Forgotten Stars (https://youtu.be/Q8e8yqRfxtU) (+ KAERRA 허가)
+
+NfK (A)
+- Abel & Inu - Dream of Memories (https://youtu.be/s1OlNqpiQzo)
+
+niAE
+- Abel & Inu - Dream of Memories (https://youtu.be/s1OlNqpiQzo)
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+
+새제비
+- Cansol - Elevator Music (https://youtu.be/-dpZvYcKWpA)
+
+냉동치킨
+- Cansol - Elevator Music (https://youtu.be/-dpZvYcKWpA)
+
+PizzaLovers007 (A)
+- DOT96  - MAKE IT FUNKY NOW (https://youtu.be/Q-B7N20AUIU)
+
+HanB
+- Halv - Wings (https://youtu.be/0psRxmc-Q6A)
+
+Pharah
+- iTIC - Triple Sec (https://youtu.be/B9nizZpBMdA)
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+- ああああ - ∀ (https://youtu.be/5IOhkCSAWkI)
+
+PowerFactory (A)
+- q/stol - LOVE THIS MOMENT (https://youtu.be/rCE7kiurm-s)
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+- ああああ - w = addict (https://youtu.be/FHb-IjdkVTs)
+- Frums - 24eeev0-$ (https://youtu.be/M0pDs4QHKPQ)
+
+-K
+- Orange Wolke - Stephen's Tiny Cafe (https://youtu.be/7mZwBnyNTm4)
+
+Bingsu
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+- Plum - R (New Version) (https://youtu.be/U_VsIlN1nqI)
+
+Chyaryam
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+
+OE (A)
+- Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
+
+Felix
+- Frums - XNOR XNOR XNOR (https://youtu.be/dJFqtPKbobY)
+
+PLORALD
+- Camellia - Tojita Sekai (https://youtu.be/dMAa1xaWIUk)
+
+Plant Guy (P)
+- Plant Guy - Fog sees it (https://youtu.be/UaInp6Q21gE)
+
+NumbEr07 (A, except for Journey)
+- Halv - Barrage (https://youtu.be/cPvyJ_PGxjY)
+- Plum - R (New Version) (https://youtu.be/U_VsIlN1nqI)
+- Polymath9 - Dirge in Magenta (https://youtu.be/rqdkqQEfdtU)
+- E0ri4 - Rainy Gate (Simple) (https://youtu.be/3beNHZVZb5o)
+- Halv - Kaleidosc0pe (https://youtu.be/Vvd9Tb1pv0s)
+- ARForest - Journey (Remake) (https://youtu.be/fFwkBOHjZA8)
+- Cosmograph - Time Off (https://youtu.be/CeFtgulaEds)
+- Cansol - Once Again (https://youtu.be/S0DRZeUy3EA)
+
+Nephrolepis (A)
+- Plum - R 8bit (https://youtu.be/zvDiTUjjY1s)
+- II-L - THE EARTH (https://youtu.be/GEBUUr7-CdE)
+- Camellia - Together forever, my lovely lovely video game cartridges (https://youtu.be/YcODK-J7i14)
+- Cansol - Happily Ever After -True Ending- (https://youtu.be/P89dTDbhmQA)
+- ああああ - ∀ (https://youtu.be/5IOhkCSAWkI)
+- kanemiko - comet casting capsule (https://youtu.be/qcHqG-zGT6Q)
+- BilliumMoto - A Tulip For Genji (https://youtu.be/Hg6UShWr2PI)
+- Kurokotei - Nonbinarity (https://youtu.be/3WeUiucSz-c)
+
+pixxy
+- Author Wind - After school (https://youtu.be/o8EInwhzc4s)
+- Synthion - Light Years Away (https://youtu.be/t8AcIn1nCOI)
+
+한가지 (A)
+- Plum - My Piano Is Escaping (https://youtu.be/J6xHkwjvbXI)
+- Camellia - NIGHTMARE † CITY (https://youtu.be/--RzB02m5Zw?t=1647)
+- t+pazolite - Sugary Sweets (https://youtu.be/5cnQwT64XRs?t=81)
+
+Strode
+- Plum - Mad Piano Party (https://youtu.be/TQfSQF8XFKM)
+- Plum - Wake Up, Piano! (https://youtu.be/V8GzuAV1Cc8)
+- Plum - Skyscape (https://youtu.be/Hw4EaW6YMFY)
+
+Nichipe (P)
+- Plum - Mad Piano Party II (https://youtu.be/JW-jyFxj_Ek)
+
+토끼로봇 (A)
+- iTIC - We Wish You a Wonderful Christmas (https://youtu.be/nzwSA0lXVWI)
+
+초보잼 (P)
+- iTIC - We Wish You a Wonderful Christmas (https://youtu.be/nzwSA0lXVWI)
+
+BWen (A)
+- Roy Mikelate - Your Mind (Nerfed) (https://youtu.be/p1hHIOKBw9U)
+
+ANDYGAMES (A)
+- DJ Nate - Bitch Punch (https://youtu.be/G2c_W3ZrPlk)
+
+다밍
+- II-L - THE EARTH (https://youtu.be/GEBUUr7-CdE)
+
+Star4th (A)
+- Lokan - Janus (https://youtu.be/HK8gLBjnMeM)
+
+Team UtoP (AAAAA)
+- Ludicin - Clinozoisite
+
+홍시 (A)
+- Camellia - NIGHTMARE † CITY (https://youtu.be/--RzB02m5Zw?t=1647)
+
+VOWAN (P)
+- Kobaryo - Heaven's Gateway (https://youtu.be/BhAL_SsEWII)
+
+GamingGooseTV (P)
+- Kobaryo - Heaven's Gateway (https://youtu.be/BhAL_SsEWII)
+
+지네고 (A)
+- t+pazolite - Sugary Sweets (https://youtu.be/5cnQwT64XRs?t=81)
+
+Logal0
+- Synthion - Light Years Away (https://youtu.be/t8AcIn1nCOI)
+
+폐브 (P)
+- Camellia - S.A.T.E.L.L.I.T.E. (https://youtu.be/TO2FETB2_kk) (+ b b 허가)
+
+Fielis (A)
+- ARForest - The Last Page (https://youtu.be/VWkRhRen7S0)
+
+연석이2
+- seatrus - Cheating House (https://youtu.be/Ex5qSBNhyDM)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[허가 템플릿(한국어)]
+안녕하세요 OHPS를 기획하고 있는 더파입니다. ____님 레벨 사용과 관련하여 연락 드립니다.
+
+[OHPS](<https://youtu.be/utK2MFDzoPw?t=41>)는 한손 플레이를 메인으로 하여 다양한 컨텐츠를 퀘스트 형식으로 제공하는 서버입니다. 퀘스트는 4개의 레벨로 구성되어 있으며 각 레벨에 난이도에 따른 경험치를 매겨 서버 내 레벨 시스템에 활용합니다. 언급한 바 이외의 다른 용도으로는 사용하지 않습니다.
+
+서버에 사용할 ____님 레벨은 다음과 같습니다.
+- [작곡가 - 곡](<링크>)
+- [작곡가 - 곡](<링크>)
+(위의 레벨 이외에 다른 레벨도 추가될 수 있습니다.)
+
+작년 초에 운영을 시작했었으나 여러 이유로 인해 운영을 중단한 상태이며, 현재 [시트](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?gid=957395609#gid=957395609>)에 있는 레벨 모두 사용 허가를 받은 뒤에 운영을 재개할 예정입니다.
+
+긍정적인 답변 기다리고 있겠습니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+[허가 템플릿(영어)]
+Hello, this is 더파, currently planning the OHPS project.
+I'm reaching out regarding the use of your level, ____.
+
+OHPS is a discord server that focuses on one-handed gameplay, offering a variety of content in the form of quests. Each quest consists of four levels, and EXP are assigned based on the difficulty of each level. Your levels are used solely for the in-server leveling system and not for any other purpose.
+
+I'd like to use the following levels created by you:
+- [Artist - Song](<Link>)
+- [Artist - Song](<Link>)
+(Additional levels may be added in the future.)
+
+I initially launched the server early last year, but had to suspend operations for various reasons. I'm now preparing to relaunch and plan to proceed only after obtaining permission for all levels currently listed in my [sheet](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?gid=957395609#gid=957395609>).
+
+I look forward to your positive response. Thank you for your time.
+
+
+
+
+
+
+
+
+Hello, this is 더파, currently planning the OHPS project.
+I'm reaching out regarding the use of your level, Rikri.
+
+OHPS is a discord server that focuses on one-handed gameplay, offering a variety of content in the form of quests. Each quest consists of four levels, and EXP are assigned based on the difficulty of each level. Your levels are used solely for the in-server leveling system and not for any other purpose.
+
+I'd like to use the following levels created by you:
+- [Nate Harrell - Jazz Candy VIP](<https://youtu.be/OXYYBKjnuH0>)
+(Additional levels may be added in the future.)
+
+I initially launched the server early last year, but had to suspend operations for various reasons. I'm now preparing to relaunch and plan to proceed only after obtaining permission for all levels currently listed in my [sheet](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?gid=957395609#gid=957395609>).
+
+I look forward to your positive response. Thank you for your time.
