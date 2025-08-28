@@ -3,7 +3,7 @@ import gspread
 account = gspread.service_account()
 
 # Quest 시트
-file = account.open("OHPS Server DB")
+file = account.open("OHPS Server db")
 sheet = file.worksheet('퀘스트ㅣQuest')
 
 i = 17

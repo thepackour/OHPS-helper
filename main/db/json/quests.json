@@ -1,0 +1,135 @@
+[
+  {
+    "name": "It's beginning!",
+    "stars": 1,
+    "type": 0,
+    "req": 1,
+    "exp": 30
+  },
+  {
+    "name": "It's beginning!!!",
+    "stars": 1,
+    "type": 0,
+    "req": 1,
+    "exp": 50
+  },
+  {
+    "name": "Triangular Phobia",
+    "stars": 1,
+    "type": 0,
+    "req": 1,
+    "exp": 80
+  },
+  {
+    "name": "Peaceful & Healing",
+    "stars": 1,
+    "type": 0,
+    "req": 1,
+    "exp": 80
+  },
+  {
+    "name": "Mini Bosses",
+    "stars": 2,
+    "type": 0,
+    "req": 1,
+    "exp": 120
+  },
+  {
+    "name": "Swingggg",
+    "stars": 2,
+    "type": 0,
+    "req": 1,
+    "exp": 160
+  },
+  {
+    "name": "Assemble! (Easy)",
+    "stars": 2,
+    "type": 1,
+    "req": 0,
+    "exp": 300
+  },
+  {
+    "name": "Gimmicks!",
+    "stars": 2,
+    "type": 0,
+    "req": 1,
+    "exp": 180
+  },
+  {
+    "name": "Introduction to 4K",
+    "stars": 3,
+    "type": 0,
+    "req": 1,
+    "exp": 350
+  },
+  {
+    "name": "Burning Piano",
+    "stars": 3,
+    "type": 0,
+    "req": 1,
+    "exp": 350
+  },
+  {
+    "name": "Nice 2 Meet You!",
+    "stars": 3,
+    "type": 0,
+    "req": 1,
+    "exp": 320
+  },
+  {
+    "name": "milliONE PurePerfect",
+    "stars": 3,
+    "type": 0,
+    "req": 2,
+    "exp": 350
+  },
+  {
+    "name": "No Limit To 3K",
+    "stars": 4,
+    "type": 0,
+    "req": 3,
+    "exp": 700
+  },
+  {
+    "name": "wBeEiArTd",
+    "stars": 4,
+    "type": 0,
+    "req": 1,
+    "exp": 560
+  },
+  {
+    "name": "wBeEiArTd",
+    "stars": 4,
+    "type": 0,
+    "req": 1,
+    "exp": 560
+  },
+  {
+    "name": "Assemble! (Hard)",
+    "stars": 4,
+    "type": 1,
+    "req": 0,
+    "exp": 700
+  },
+  {
+    "name": "Way To Reach ZENITH",
+    "stars": 4,
+    "type": 0,
+    "req": 1,
+    "exp": 600
+  },
+  {
+    "name": "Little Fast Levels",
+    "stars": 5,
+    "type": 0,
+    "req": 1,
+    "exp": 880
+  },
+  {
+    "name": "iron tABLE",
+    "stars": 5,
+    "type": 0,
+    "req": 1,
+    "exp": 1800
+  }
+]

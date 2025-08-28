@@ -90,22 +90,22 @@ Frums - 19ZZ (Team Zeta) (370 EXP)
 
 
 [제작자 허가]
-Editor AlriC (P)
+Editor AlriC (A)
 - Riya - Polygons (remaster) (https://youtu.be/7cH3sfWkTIU)
 - ARForest - Antique (https://youtu.be/DjdgseBZbos)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 - Lime - Chronomia (Nerfed) (https://youtu.be/2-RWHO1tPdk)
 - Frums - 24eeev0-$ (https://youtu.be/M0pDs4QHKPQ)
 
-Ssimille (P)
+Ssimille (A)
 - Riya - Intruder (https://youtu.be/NqIOST3zAmc)
 - LeaF - MARENOL (https://youtu.be/VwxpLbk5sCo)
 - LeaF - Evanescent (https://youtu.be/TMmozukaNf8)
 
-Rikri (P)
+Rikri (Unable to contact)
 - Nate Harrell - Jazz Candy VIP (https://youtu.be/OXYYBKjnuH0)
 
-plo
+plo (Unable to contact)
 - ARForest - Antique (https://youtu.be/DjdgseBZbos)
 
 Team P.A.L (아키즈코라) (P)
@@ -121,23 +121,23 @@ kernby (A)
 NfK (A)
 - Abel & Inu - Dream of Memories (https://youtu.be/s1OlNqpiQzo)
 
-niAE
+niAE (A, niAE.txt 참고))
 - Abel & Inu - Dream of Memories (https://youtu.be/s1OlNqpiQzo)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 
-새제비
+새제비 (A)
 - Cansol - Elevator Music (https://youtu.be/-dpZvYcKWpA)
 
-냉동치킨
+냉동치킨 (A)
 - Cansol - Elevator Music (https://youtu.be/-dpZvYcKWpA)
 
 PizzaLovers007 (A)
 - DOT96  - MAKE IT FUNKY NOW (https://youtu.be/Q-B7N20AUIU)
 
-HanB
+HanB (A)
 - Halv - Wings (https://youtu.be/0psRxmc-Q6A)
 
-Pharah
+Pharah (A)
 - iTIC - Triple Sec (https://youtu.be/B9nizZpBMdA)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 - ああああ - ∀ (https://youtu.be/5IOhkCSAWkI)
@@ -148,23 +148,23 @@ PowerFactory (A)
 - ああああ - w = addict (https://youtu.be/FHb-IjdkVTs)
 - Frums - 24eeev0-$ (https://youtu.be/M0pDs4QHKPQ)
 
--K
+-K (A)
 - Orange Wolke - Stephen's Tiny Cafe (https://youtu.be/7mZwBnyNTm4)
 
-Bingsu
+Bingsu (P)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 - Plum - R (New Version) (https://youtu.be/U_VsIlN1nqI)
 
-Chyaryam
+Chyaryam (P)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 
 OE (A)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 
-Felix
+Felix (A)
 - Frums - XNOR XNOR XNOR (https://youtu.be/dJFqtPKbobY)
 
-PLORALD
+PLORALD (A)
 - Camellia - Tojita Sekai (https://youtu.be/dMAa1xaWIUk)
 
 Plant Guy (P)
@@ -190,7 +190,7 @@ Nephrolepis (A)
 - BilliumMoto - A Tulip For Genji (https://youtu.be/Hg6UShWr2PI)
 - Kurokotei - Nonbinarity (https://youtu.be/3WeUiucSz-c)
 
-pixxy
+pixxy (A)
 - Author Wind - After school (https://youtu.be/o8EInwhzc4s)
 - Synthion - Light Years Away (https://youtu.be/t8AcIn1nCOI)
 
@@ -199,7 +199,7 @@ pixxy
 - Camellia - NIGHTMARE † CITY (https://youtu.be/--RzB02m5Zw?t=1647)
 - t+pazolite - Sugary Sweets (https://youtu.be/5cnQwT64XRs?t=81)
 
-Strode
+Strode (A)
 - Plum - Mad Piano Party (https://youtu.be/TQfSQF8XFKM)
 - Plum - Wake Up, Piano! (https://youtu.be/V8GzuAV1Cc8)
 - Plum - Skyscape (https://youtu.be/Hw4EaW6YMFY)
@@ -219,7 +219,7 @@ BWen (A)
 ANDYGAMES (A)
 - DJ Nate - Bitch Punch (https://youtu.be/G2c_W3ZrPlk)
 
-다밍
+다밍 (P)
 - II-L - THE EARTH (https://youtu.be/GEBUUr7-CdE)
 
 Star4th (A)
@@ -231,8 +231,10 @@ Team UtoP (AAAAA)
 홍시 (A)
 - Camellia - NIGHTMARE † CITY (https://youtu.be/--RzB02m5Zw?t=1647)
 
-VOWAN (P)
+VOWAN (A)
 - Kobaryo - Heaven's Gateway (https://youtu.be/BhAL_SsEWII)
+
+// Sorry for contacting you again, but would you mind reaching out to GamingGooseTV to confirm permission? I've tried but still haven't received a reply from him.
 
 GamingGooseTV (P)
 - Kobaryo - Heaven's Gateway (https://youtu.be/BhAL_SsEWII)
@@ -240,28 +242,17 @@ GamingGooseTV (P)
 지네고 (A)
 - t+pazolite - Sugary Sweets (https://youtu.be/5cnQwT64XRs?t=81)
 
-Logal0
+Logal0 (P)
 - Synthion - Light Years Away (https://youtu.be/t8AcIn1nCOI)
 
-폐브 (P)
+폐브 (A)
 - Camellia - S.A.T.E.L.L.I.T.E. (https://youtu.be/TO2FETB2_kk) (+ b b 허가)
 
 Fielis (A)
 - ARForest - The Last Page (https://youtu.be/VWkRhRen7S0)
 
-연석이2
+연석이2 (A)
 - seatrus - Cheating House (https://youtu.be/Ex5qSBNhyDM)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -290,11 +281,6 @@ Fielis (A)
 
 
 
-
-
-
-
-
 [허가 템플릿(영어)]
 Hello, this is 더파, currently planning the OHPS project.
 I'm reaching out regarding the use of your level, ____.
@@ -313,19 +299,3 @@ I look forward to your positive response. Thank you for your time.
 
 
 
-
-
-
-
-Hello, this is 더파, currently planning the OHPS project.
-I'm reaching out regarding the use of your level, Rikri.
-
-OHPS is a discord server that focuses on one-handed gameplay, offering a variety of content in the form of quests. Each quest consists of four levels, and EXP are assigned based on the difficulty of each level. Your levels are used solely for the in-server leveling system and not for any other purpose.
-
-I'd like to use the following levels created by you:
-- [Nate Harrell - Jazz Candy VIP](<https://youtu.be/OXYYBKjnuH0>)
-(Additional levels may be added in the future.)
-
-I initially launched the server early last year, but had to suspend operations for various reasons. I'm now preparing to relaunch and plan to proceed only after obtaining permission for all levels currently listed in my [sheet](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?gid=957395609#gid=957395609>).
-
-I look forward to your positive response. Thank you for your time.
