@@ -1,0 +1,142 @@
+[
+  {
+    "quest_id": 1,
+    "artist": "OFFICIAL",
+    "song": "5-X The Midnight Train",
+    "creator": "OFFICIAL",
+    "exp": 10
+  },
+  {
+    "quest_id": 1,
+    "artist": "OFFICIAL",
+    "song": "8-X Jungle City",
+    "creator": "OFFICIAL",
+    "exp": 15
+  },
+  {
+    "quest_id": 1,
+    "artist": "OFFICIAL",
+    "song": "9-X Classic Pursuit",
+    "creator": "OFFICIAL",
+    "exp": 15
+  },
+  {
+    "quest_id": 1,
+    "artist": "Riya",
+    "song": "Polygons (remaster)",
+    "creator": "Editor AlriC",
+    "exp": 10
+  },
+  {
+    "quest_id": 2,
+    "artist": "OFFICIAL",
+    "song": "10-X Butterfly Planet",
+    "creator": "OFFICIAL",
+    "exp": 15
+  },
+  {
+    "quest_id": 2,
+    "artist": "OFFICIAL",
+    "song": "11-X Heracles",
+    "creator": "OFFICIAL",
+    "exp": 15
+  },
+  {
+    "quest_id": 2,
+    "artist": "OFFICIAL",
+    "song": "XH-X Final Hope",
+    "creator": "OFFICIAL",
+    "exp": 15
+  },
+  {
+    "quest_id": 2,
+    "artist": "Riya",
+    "song": "Intruder",
+    "creator": "Ssimille",
+    "exp": 20
+  },
+  {
+    "quest_id": 3,
+    "artist": "OFFICIAL",
+    "song": "12-X Artificial Chariot",
+    "creator": "OFFICIAL",
+    "exp": 20
+  },
+  {
+    "quest_id": 3,
+    "artist": "OFFICIAL",
+    "song": "XR-X Rose Garden",
+    "creator": "OFFICIAL",
+    "exp": 20
+  },
+  {
+    "quest_id": 3,
+    "artist": "Monokuro",
+    "song": "Black Rose",
+    "creator": "CyanAqua",
+    "exp": 40
+  },
+  {
+    "quest_id": 3,
+    "artist": "Connexio",
+    "song": "Axylor",
+    "creator": "hotduck",
+    "exp": 30
+  },
+  {
+    "quest_id": 4,
+    "artist": "しゃろう",
+    "song": "3:03 PM",
+    "creator": "Team P.A.L.",
+    "exp": 25
+  },
+  {
+    "quest_id": 4,
+    "artist": "Qyubey",
+    "song": "humanity",
+    "creator": "hotduck + kernby",
+    "exp": 20
+  },
+  {
+    "quest_id": 4,
+    "artist": "Abel & Inu",
+    "song": "Dream of Memories",
+    "creator": "NfK & niAE",
+    "exp": 35
+  },
+  {
+    "quest_id": 4,
+    "artist": "Cansol",
+    "song": "Elevator Music",
+    "creator": "새제비 & 냉동치킨",
+    "exp": 30
+  },
+  {
+    "quest_id": 5,
+    "artist": "OFFICIAL",
+    "song": "XO-X One Forgotten Night",
+    "creator": "OFFICIAL",
+    "exp": 45
+  },
+  {
+    "quest_id": 5,
+    "artist": "OFFICIAL",
+    "song": "XT-X Options",
+    "creator": "OFFICIAL",
+    "exp": 50
+  },
+  {
+    "quest_id": 5,
+    "artist": "DOT96",
+    "song": "MAKE IT FUNKY NOW",
+    "creator": "PizzaLovers007",
+    "exp": 60
+  },
+  {
+    "quest_id": 5,
+    "artist": "Halv",
+    "song": "Wings",
+    "creator": "HanB",
+    "exp": 90
+  }
+]

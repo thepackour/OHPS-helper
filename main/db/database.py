@@ -1,10 +1,9 @@
 import datetime
 import json
+import os
 
-from discord.ext.commands import UserNotFound
-
-from ConnFactory import with_connection
-from exceptions import *
+from main.db.ConnFactory import with_connection
+from main.db.exceptions import *
 
 
 def _console_log(message: str):
@@ -54,7 +53,9 @@ def _find_levels(cursor, quest_id: int):
 
 
 def get_event_quest():
-    with open('data.json', 'r', encoding='utf-8') as f:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
+    json_path = os.path.join(BASE_DIR, 'json', 'event_quest_info.json')
+    with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     if data['open']:
         return find_quest_by_id(data['quest_id'])
@@ -71,7 +72,7 @@ def add_user(cursor, register_dict: dict):
 
 @with_connection
 def add_details(cursor, id: str, details_dict: dict):
-    cursor.execute('''SELECT EXISTS (SELECT * FROM users WHERE id = :id)''', id)
+    cursor.execute('''SELECT EXISTS (SELECT * FROM users WHERE id = :id)''', (id,))
     if cursor.fetchone()[0]:
         cursor.execute('''
             UPDATE users
@@ -106,7 +107,7 @@ def find_user(cursor, query_dict: dict):
 
 @with_connection
 def delete_user(cursor, user_id: str):
-    cursor.execute('''SELECT EXISTS (SELECT * FROM users WHERE id = :user_id)''', user_id)
+    cursor.execute('''SELECT EXISTS (SELECT * FROM users WHERE id = :user_id)''', (user_id,))
     if cursor.fetchone()[0]:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute("UPDATE users SET deleted_at = :deleted_at WHERE id = :user_id", {"deleted_at": timestamp, "user_id": user_id})
@@ -136,7 +137,7 @@ def get_quest_name_list(cursor):
 def find_quest_by_stars(cursor, stars: int):
     if stars < 1 or stars > 5: raise InvalidStars()
     else:
-        cursor.execute('''SELECT * FROM quests WHERE stars = ?''', stars)
+        cursor.execute('''SELECT * FROM quests WHERE stars = ?''', (stars,))
         res = cursor.fetchall()
         if not res: # res가 빈 리스트 or sqlite3.Row 객체로 이루어진 리스트
             raise NoSuchQuest()
@@ -147,7 +148,7 @@ def find_quest_by_stars(cursor, stars: int):
 
 @with_connection
 def find_quest_by_id(cursor, quest_id: int):
-    cursor.execute('''SELECT * FROM quests WHERE id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
     res = cursor.fetchone()
     if res is None: raise NoSuchQuest()
     else: return dict(res)
@@ -155,7 +156,7 @@ def find_quest_by_id(cursor, quest_id: int):
 
 @with_connection
 def find_quest_by_name(cursor, quest_name: str):
-    cursor.execute('''SELECT * FROM quests WHERE name = ?''', quest_name)
+    cursor.execute('''SELECT * FROM quests WHERE name = ?''', (quest_name,))
     res = cursor.fetchone()
     if res is None: raise NoSuchQuest()
     else: return dict(res)
@@ -164,7 +165,7 @@ def find_quest_by_name(cursor, quest_name: str):
 @with_connection
 def find_level_clears(cursor, user_id: str):
     if _find_user(cursor, user_id) is None: raise NoSuchUser()
-    cursor.execute('''SELECT * FROM level_clears WHERE user_id = ?''', user_id)
+    cursor.execute('''SELECT * FROM level_clears WHERE user_id = ?''', (user_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: x['id'])
@@ -174,7 +175,7 @@ def find_level_clears(cursor, user_id: str):
 @with_connection
 def find_quest_clears(cursor, user_id: str):
     if _find_user(cursor, user_id) is None: raise NoSuchUser()
-    cursor.execute('''SELECT * FROM quest_clears WHERE user_id = ?''', user_id)
+    cursor.execute('''SELECT * FROM quest_clears WHERE user_id = ?''', (user_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: x['id'])

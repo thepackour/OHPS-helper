@@ -1,3 +1,5 @@
+import json
+import os
 import sqlite3 as sql
 
 from main.dto.register_dto import RegisterDto
@@ -9,7 +11,7 @@ cur = con.cursor()
 
 query_list = ('''
 CREATE TABLE IF NOT EXISTS quests (
-    id SMALLINT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255),
     stars TINYINT,
     type TINYINT DEFAULT 0,
@@ -18,8 +20,8 @@ CREATE TABLE IF NOT EXISTS quests (
 );''',
 '''
 CREATE TABLE IF NOT EXISTS levels (
-    id MEDIUMINT PRIMARY KEY,
-    quest_id BIGINT
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    quest_id BIGINT,
     artist VARCHAR(255),
     song VARCHAR(255),
     creator VARCHAR(255),
@@ -43,23 +45,23 @@ CREATE TABLE IF NOT EXISTS users (
 );''',
 '''
 CREATE TABLE IF NOT EXISTS level_clears (
-    id BIGINT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id VARCHAR(255),
-    level_id MEDIUMINT,
+    level_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(level_id) REFERENCES levels(id)
 );''',
 '''CREATE TABLE IF NOT EXISTS quest_clears (
-    id BIGINT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id VARCHAR(255),
-    quest_id SMALLINT,
+    quest_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(quest_id) REFERENCES quests(id)
 );''',
 '''CREATE TABLE IF NOT EXISTS collab_quest_progress (
-    id SMALLINT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     level_clear_id INT,
     part VARCHAR(255),
     video VARCHAR(255),
@@ -73,15 +75,62 @@ def create_table():
     cur = con.cursor()
     for query in query_list:
         cur.execute(query)
-    print("CREATE TABLE: completed")
     con.commit()
+    print("CREATE: completed")
     con.close()
 
 
-### TEST ###
-def add_testuser():
+def add_quests_data():
     con = sql.connect('test.db')
+    con.execute('PRAGMA foreign_keys = ON')
     cur = con.cursor()
-    testuser = RegisterDto(id='433224189194010654', username='thepackour')
-    cur.execute("INSERT INTO users (id, username) VALUES (:id, :username)", testuser.dict())
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
+    json_path = os.path.join(BASE_DIR, 'json', 'quests.json')
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for _ in data:
+        cur.execute('''
+        INSERT INTO quests (name, stars, type, req, exp) 
+        VALUES (?, ?, ?, ?, ?)
+        ''', (_['name'], _['stars'], _['type'], _['req'], _['exp']))
+    con.commit()
+    print("INSERT: completed")
+    con.close()
 
+
+
+
+def add_users_data():
+    con = sql.connect('test.db')
+    con.execute('PRAGMA foreign_keys = ON')
+    cur = con.cursor()
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
+    json_path = os.path.join(BASE_DIR, 'json', 'users.json')
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for _ in data:
+            cur.execute('''
+        INSERT INTO users (id, username) 
+        VALUES (?, ?)
+        ''', (_['id'], _['username']))
+    con.commit()
+    print("INSERT: completed")
+    con.close()
+
+
+def add_levels_data():
+    con = sql.connect('test.db')
+    con.execute('PRAGMA foreign_keys = ON')
+    cur = con.cursor()
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
+    json_path = os.path.join(BASE_DIR, 'json', 'levels.json')
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for _ in data:
+            cur.execute('''
+        INSERT INTO levels (quest_id, artist, song, creator, exp) 
+        VALUES (:quest_id, :artist, :song, :creator, :exp)
+        ''', _)
+    con.commit()
+    print("INSERT: completed")
+    con.close()

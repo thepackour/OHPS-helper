@@ -4,45 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="from previous folder &amp; .env file added">
+    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="Re-wrote all codes">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DB_structure.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/permission/NumbEr07.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/permission/niAE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/permission/폐브.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/DB_Manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/calc/EXPLevelFormula.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/calc/WordSimilarity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/calc/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/ConnFactory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/DBInit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/QuestCmd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/event_quest_info.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/db/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/dto/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/dto/details_dto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/dto/register_dto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/dto/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/msgformat/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/sheet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/DBInit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/dbmanagertest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/word_similar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/db/json/levels.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/db/json/quests.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/db/json/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/msgformat/variables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OHPS-helper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OHPS-helper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OHPS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/memo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OHPS_DB_formator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/sheet/SheetFormator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OHPS_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/OHPS_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OHPS_helper_ctx.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OHPS_helper_ctx_underdev.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_account.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/service_account.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/service_account.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/credentials/service_account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/DBInit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/DBInit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/QuestCmd.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/QuestCmd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/event_quest_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/json/event_quest_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +78,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "modulation-1",
     "last_opened_file_path": "D:/Repos/OHPS-helper/test",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -107,11 +86,11 @@
       <recent name="D:\Repos\OHPS-helper\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Repos\OHPS-helper\main\db\json" />
+      <recent name="D:\Repos\OHPS-helper\main\credentials" />
       <recent name="D:\Repos\OHPS-helper\main\sheet" />
       <recent name="D:\Repos\OHPS-helper\test" />
       <recent name="D:\Repos\OHPS-helper\main\db" />
-      <recent name="D:\Repos\OHPS-helper\docs" />
-      <recent name="D:\Repos\OHPS-helper\OHPS-helper" />
     </key>
   </component>
   <component name="RunManager" selected="Python.OHPS_helper_ctx">
@@ -258,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756227454784</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Re-wrote all codes">
+      <option name="closed" value="true" />
+      <created>1756399713124</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756399713124</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,6 +261,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="from previous folder &amp; .env file added" />
-    <option name="LAST_COMMIT_MESSAGE" value="from previous folder &amp; .env file added" />
+    <MESSAGE value="Re-wrote all codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-wrote all codes" />
   </component>
 </project>

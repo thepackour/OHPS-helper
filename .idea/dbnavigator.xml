@@ -40,9 +40,27 @@
     <connection id="a2b4ea7f-9fda-402a-a95e-d79c7601ab91" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="a2b4ea7f-9fda-402a-a95e-d79c7601ab91" dataset="test.collab_quest_progress" active-filter-id="6fd4e40e-d15d-48c8-943a-2ed7088d4cf2">
+      <filter id="6fd4e40e-d15d-48c8-943a-2ed7088d4cf2" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
     <filter-actions connection-id="a2b4ea7f-9fda-402a-a95e-d79c7601ab91" dataset="test.users" active-filter-id="e9533752-0c94-4440-9882-907f761d3d2c">
       <filter id="e9533752-0c94-4440-9882-907f761d3d2c" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="a2b4ea7f-9fda-402a-a95e-d79c7601ab91" dataset="test.levels" active-filter-id="a3a4c6ed-a3f4-418a-a25f-d5d9556f39c9">
+      <filter id="a3a4c6ed-a3f4-418a-a25f-d5d9556f39c9" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="a2b4ea7f-9fda-402a-a95e-d79c7601ab91" dataset="test.quests" active-filter-id="EMPTY_FILTER">
+      <filter id="8e691c24-3382-42cd-8ece-191a661dfd3b" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -71,7 +89,7 @@
           <url-parameters />
           <files>
             <file path="sqlite.db" schema="main" />
-            <file path="D:\Repos\OHPS-helper\test\test.db" schema="test" />
+            <file path="D:\Repos\OHPS-helper\main\test.db" schema="test" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -580,5 +598,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>
