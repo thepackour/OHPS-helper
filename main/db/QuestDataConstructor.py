@@ -2,8 +2,10 @@ import json
 import os
 
 from main.db.ConnFactory import with_connection
-from main.db import NoSuchUser
+from main.db import NoSuchUser, NoSuchLevel
 from main.msgformat.variables import requirement_list
+import main.debug as debug
+from main.msgformat.OfficialLevels import *
 
 
 number_of_collab_parts = {
@@ -35,52 +37,75 @@ def quest_data_constructor(cursor, quest: dict):
     stars = quest['stars']
     req = requirement_list[quest['req']]
 
-    cursor.execute('''SELECT * FROM levels WHERE quest_id = ?''', (quest['id'],))
+    cursor.execute('''SELECT * FROM levels WHERE quest_id = :id''', quest)
     level_rows = cursor.fetchall()
+    if not level_rows:
+        debug.log(f"Failed to find levels by quest_id: {quest['id']}", level_rows)
+        raise NoSuchLevel()
+    debug.log(f"Successfully found levels by quest_id: {quest['id']}", level_rows)
     level_list = [dict(row) for row in level_rows]
 
     level_s = ""
     latest_s = ""
     for i, level in enumerate(level_list, start=1):
         level_s += f"**Level #{i}** \n"
-        level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+        if is_official(level):
+            level_s += official_str(level)
+        else:
+            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
 
         cursor.execute('''
         SELECT * FROM level_clears 
-        WHERE level_id = ? 
+        WHERE level_id = :id 
         ORDER BY id DESC
         LIMIT 1;
-        ''', level['id'])
+        ''', level)
         latest_clear_row = cursor.fetchone()
-        if latest_clear_row:
+        if latest_clear_row is None:
+            debug.log(f"Failed to find latest level clear by level_id: {level['id']}", latest_clear_row)
+            latest_s += f"Level #{i} : none\n"
+        else:
+            debug.log(f"Successfully found latest level clear by level_id: {level['id']}", latest_clear_row)
             latest_clear_dict = dict(latest_clear_row)
             cursor.execute('''
             SELECT * FROM users 
-            WHERE id = ? 
-            ''', (latest_clear_dict['user_id'],))
-            user_row = cursor.fetchone()[0]
+            WHERE id = :user_id 
+            ''', latest_clear_dict)
+            user_row = cursor.fetchone()
             if user_row:
+                debug.log(f"Successfully found user by user_id: {latest_clear_dict['user_id']}", user_row)
                 u = dict(user_row)
                 latest_s += f"Level #{i} : {u['username']}\n"
             else:
+                debug.log(f"Failed to find user by user_id: {latest_clear_dict['user_id']} (Maybe logic error)", user_row)
                 latest_s += f"Level #{i} : none\n"
                 raise NoSuchUser()
-        else:
-            latest_s += f"Level #{i} : none\n"
 
     cursor.execute('''
     SELECT * FROM quest_clears 
-    WHERE quest_id = ? 
+    WHERE quest_id = :id 
     ORDER BY id
-    ''', (quest['id'],))
-    user = cursor.fetchone()[0]
+    LIMIT 1;
+    ''', quest)
+    latest_quest_clear_row = cursor.fetchone()
 
-    if user:
-        u = dict(user)
-        latest_s += f"All Clear : {u['username']}\n"
-    else:
+    if latest_quest_clear_row is None:
+        debug.log(f"Failed to find latest quest clear by quest_id: {quest['id']}", latest_quest_clear_row)
         latest_s += f"All Clear : none\n"
-
+    else:
+        latest_quest_clear = dict(latest_quest_clear_row)
+        cursor.execute('''
+                        SELECT * FROM users 
+                        WHERE id = :user_id 
+                        ''', latest_quest_clear)
+        user_row = cursor.fetchone()
+        if user_row is None:
+            debug.log(f"(Maybe logic error) Failed to find user by user_id: {latest_quest_clear['user_id']} (from latest_quest_clear)", user_row)
+            raise NoSuchUser()
+        debug.log(
+            f"Successfully found user by user_id: {latest_quest_clear['user_id']} (from latest_quest_clear)", user_row)
+        u = dict(user_row)
+        latest_s += f"All Clear : {u['username']}\n"
 
     return {
         'name': quest['name'],

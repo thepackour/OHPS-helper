@@ -3,22 +3,14 @@ import datetime
 
 from main.calc import minEXP
 import main.db as db
-from main.db.QuestCmd import *
+from main.db.QuestDataConstructor import *
 from main.msgformat.variables import *
+import main.debug as debug
 
 
 class InvalidQuestType(Exception):
     def __str__(self):
         return "Invalid quest type"
-
-
-
-def _console_log(message: str, data_dict: dict = None):
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[EmbedGenerator] ({now}) | {message}")
-    if data_dict:
-        for key, value in data_dict.items():
-            print(f"{key}: {value} \n")
 
 
 def profile_embed(type: str, user: dict):
@@ -61,7 +53,7 @@ def profile_embed(type: str, user: dict):
             level_list = db.find_levels(level_id_list)
             quest_list = db.find_levels(quest_id_list)
         except Exception as e:
-            _console_log(f"Failed to generate profile_embed ({e})")
+            debug.log("Failed to generate profile_embed", e=e)
 
         s = ""
         last_clear = "none"
@@ -90,6 +82,11 @@ def profile_embed(type: str, user: dict):
         embed.set_thumbnail(url=user['image_url'])
 
         embed.add_field(
+            name="Username",
+            value=user['username'],
+            inline=False
+        )
+        embed.add_field(
             name="마지막으로 완료한 퀘스트ㅣLastly Completed Quest",
             value=last_clear,
             inline=False
@@ -107,6 +104,108 @@ def profile_embed(type: str, user: dict):
             colour=tier_list[user['tier']]['color']
         )
         embed.set_thumbnail(url=user['image_url'])
+        embed.add_field(
+            name="Username",
+            value=user['username'],
+            inline=False
+        )
+
+        embed.add_field(
+            name="사용하는 손ㅣMain Hand",
+            value=user['main_hand'],
+            inline=False
+        )
+        embed.add_field(
+            name="사용하는 키 개수ㅣNumber of Keys",
+            value=user['number_of_keys'],
+            inline=False
+        )
+        embed.add_field(
+            name="계단 방향ㅣMultiple Input Direction",
+            value=user['multi_input_direction'],
+            inline=False
+        )
+        embed.add_field(
+            name="세부사항ㅣDetails",
+            value=user['details'],
+            inline=False
+        )
+        return embed
+    elif type == 'all':  # datebase 사용
+        try:
+            level_clear_list = db.find_level_clears(user['id'])
+            quest_clear_list = db.find_quest_clears(user['id'])
+
+            level_id_list = [clear['level_id'] for clear in level_clear_list]
+            quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+
+            level_list = db.find_levels(level_id_list)
+            quest_list = db.find_levels(quest_id_list)
+        except Exception as e:
+            debug.log("Failed to generate profile_embed", e=e)
+
+        s = ""
+        last_clear = "none"
+        if level_list:
+            for clear in level_clear_list:
+                s += quest_list[clear['quest_id']]['name']
+                s += "ㅣ"
+                s += level_list[clear['level_id']]['artist']
+                s += " - "
+                s += level_list[clear['level_id']]['song']
+                s += "\n"
+
+            last_clear = s.split('\n')[-2] if s else "none"
+
+            if quest_list:
+                for clear in quest_clear_list:
+                    s += quest_list[clear['quest_id']]['name']
+                    s += "ㅣAll Clear\n"
+        else:
+            s = "none"
+
+        embed = discord.Embed(
+            title="유저 프로필ㅣUser Profile",
+            description="< 모두ㅣAll >",
+            colour=tier_list[user['tier']]['color']
+        )
+        embed.set_thumbnail(url=user['image_url'])
+
+        embed.add_field(
+            name="Username",
+            value=user['username'],
+            inline=False
+        )
+        embed.add_field(
+            name="레벨ㅣLevel",
+            value=user['level'],
+            inline=False
+        )
+        embed.add_field(
+            name="총 경험치ㅣTotal EXP",
+            value=user['exp'],
+            inline=False
+        )
+        embed.add_field(
+            name="다음 레벨까지 남은 경험치ㅣEXP left until next level",
+            value=minEXP(user['level']) - user['exp'],
+            inline=False
+        )
+        embed.add_field(
+            name="레벨ㅣLevel",
+            value=user['level'],
+            inline=False
+        )
+        embed.add_field(
+            name="마지막으로 완료한 퀘스트ㅣLastly Completed Quest",
+            value=last_clear,
+            inline=False
+        )
+        embed.add_field(
+            name="클리어한 퀘스트ㅣCompleted Quests",
+            value=s,
+            inline=False
+        )
         embed.add_field(
             name="사용하는 손ㅣMain Hand",
             value=user['main_hand'],
@@ -134,10 +233,13 @@ def profile_embed(type: str, user: dict):
 def quest_embed(quest: dict): # database 사용
     if quest['type'] == 0:
         data = quest_data_constructor(quest)
+        stars = data['stars']
+        difficulty = f"Difficulty : {stars} "
+        difficulty += "star" if stars == 1 else "stars"
         embed = discord.Embed(
             title=data['name'],
-            description=data['stars'],
-            colour=stars_colour_list[data['stars']]
+            description=difficulty,
+            colour=stars_colour_list[stars]
         )
         embed.add_field(
             name="조건ㅣRequirement",
@@ -151,7 +253,7 @@ def quest_embed(quest: dict): # database 사용
         )
         embed.add_field(
             name="올클리어 보상ㅣAll Clear Reward",
-            value=data['exp'],
+            value=f"{data['exp']} EXP",
             inline=False
         )
         embed.add_field(
@@ -162,9 +264,12 @@ def quest_embed(quest: dict): # database 사용
         return embed
     elif quest['type'] == 1:
         data = collab_quest_data_constructor(quest)
+        stars = data['stars']
+        difficulty = f"Difficulty : {stars} "
+        difficulty += "star" if stars == 1 else "stars"
         embed = discord.Embed(
             title=data['name'],
-            description=data['stars'],
+            description=difficulty,
             colour=stars_colour_list[data['stars']]
         )
         embed.add_field(
@@ -179,14 +284,17 @@ def quest_embed(quest: dict): # database 사용
         )
         embed.add_field(
             name="올클리어 보상ㅣAll Clear Reward",
-            value=data['exp'],
+            value=f"{data['exp']} EXP",
             inline=False
         )
     elif quest['type'] == 2:
         data = event_quest_data_constructor(quest)
+        stars = data['stars']
+        difficulty = f"Difficulty : {stars} "
+        difficulty += "star" if stars == 1 else "stars"
         embed = discord.Embed(
             title=data['name'],
-            description=data['stars'],
+            description=difficulty,
             colour=0xffa0ff
         )
         embed.add_field(

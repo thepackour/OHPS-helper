@@ -11,6 +11,7 @@ import main.db as db
 import main.msgformat as msgformat
 import main.calc as calc
 from main.calc.WordSimilarity import most_similar
+import main.debug as debug
 
 load_dotenv()
 token = os.getenv("OHPS_TOKEN")
@@ -33,18 +34,10 @@ bot.help_command = None
 
 
 class WrongInput(Exception):
-    pass
-
-
-def _console_log(message: str, data_dict: dict = None):
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[OHPS_helper_ctx] ({now}) | {message}")
-    if data_dict:
-        for key, value in data_dict.items():
-            print(f"{key}: {value} \n")
+    def __str__(self):
+        return "Client provided wrong input"
 
 def timestamp(): return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
 
 
 @bot.event
@@ -53,7 +46,9 @@ async def on_ready():
     try:
         synced = await bot.tree.sync()
         print(f"Synced {len(synced)} command(s)\n")
-        await bot.change_presence(activity=discord.CustomActivity(type=discord.ActivityType.custom, name=f'Running {len(synced)} commands with one hand'))
+        await bot.change_presence(activity=discord.CustomActivity(type=discord.ActivityType.custom,
+                                                                  name='under development'))
+        # f'Running {len(synced)} commands with one hand'
     except Exception as e:
         print(e)
 
@@ -65,8 +60,8 @@ async def on_app_command_completion(interaction: discord.Interaction, command):
     log_interaction_option = " "
     if 'options' in log_interaction.data:
         for values in log_interaction.data['options']:
-            log_interaction_option = log_interaction_option + f"({values['name']} : {values['value']}) "
-    print(f"[{timestamp()} | Command] /{log_command.name}\n<{log_interaction.user.name} ({log_interaction.id})> /{log_command.name}{log_interaction_option}\n")
+            log_interaction_option += f"{values['name']} : {values['value']} ({type(values['value'])})\n"
+    print(f"[{timestamp()} | Command] /{log_command.name}\n<{log_interaction.user.name} ({log_interaction.id})> /{log_command.name} \n{log_interaction_option}")
 
 
 @bot.event
@@ -210,7 +205,7 @@ async def rank(interaction: discord.Interaction):
     if embed is None:
         await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
                                         "An error occurred. Plase try again.")
-        _console_log("Cannot load leaderboard_embed", {'embed': embed})
+        debug.log("Cannot load leaderboard_embed", {'embed': embed})
     else: await interaction.followup.send(embed=embed)
 
 
@@ -260,9 +255,9 @@ async def details(interaction: discord.Interaction, leftright: str, keys: str, i
 @app_commands.describe(range="표시 범위 선택ㅣRange to show (level/quest/play/all)")
 async def myprofile(interaction: discord.Interaction, range: str):
     await interaction.response.defer()
-
+    user_id = str(interaction.user.id)
     try:
-        user = db.find_user({'id': str(interaction.user.id)})
+        user = db.find_user({'id': user_id})
         user['image_url'] = interaction.user.avatar.url
 
         if range in ["level", "quest", "play", "all"]:
@@ -271,11 +266,16 @@ async def myprofile(interaction: discord.Interaction, range: str):
         else: raise WrongInput()
 
     except db.NoSuchUser:
+        debug.log("No such user", {'user_id': user_id})
         await interaction.followup.send("아직 등록되지 않았습니다. `/register`로 등록해주세요!\n"
                                         "You are not registered in the server. `/register` to register!")
     except WrongInput:
-        _console_log("Wrong input", {'range': range})
+        debug.log("Wrong input", {'range': range})
         await interaction.followup.send("잘못된 입력입니다. 다시 시도해주세요.\nWrong input. Please try again.")
+    except Exception as e:
+        print(e)
+        await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
+                                        "An error occurred. Plase try again.")
 
 
 @bot.tree.command(name="level", description="입력한 레벨에 관한 정보를 보여줍니다.ㅣShows the info about the level you typed")
@@ -324,8 +324,9 @@ async def quest(interaction: discord.Interaction, quest: str):
 async def event_quest(interaction: discord.Interaction):
     quest = db.get_event_quest()
     if quest is None:
-        await interaction.response.send_message("현재 진행 중인 이벤트가 없습니다. 이벤트 공지는 #공지ㅣannouncement 에서 확인할 수 있습니다.\n"
-                                        "There's no events going on. Event announcement can be checked at #공지ㅣannouncement.")
+        channel_link = "https://discord.com/channels/1184912633548259418/1190695760547827883"
+        await interaction.response.send_message(f"현재 진행 중인 이벤트가 없습니다. 이벤트 공지는 {channel_link} 에서 확인할 수 있습니다.\n"
+                                        f"There's no events going on. Event announcement can be checked at {channel_link}.")
     else:
         event_embed = msgformat.quest_embed(quest)
         await interaction.response.send_message(embed=event_embed)

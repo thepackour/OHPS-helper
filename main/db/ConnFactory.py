@@ -1,6 +1,8 @@
 import sqlite3
 from functools import wraps
 
+import main.debug as debug
+
 
 def create_connection(db_file='test.db'):
     return sqlite3.connect(db_file)
@@ -14,10 +16,12 @@ def with_connection(func):
         cursor = conn.cursor()
         try:
             result = func(cursor, *args, **kwargs)
+            debug.log_w(func.__name__, args, kwargs, result)
             conn.commit()
             return result
-        except Exception:
+        except Exception as e:
             conn.rollback()
+            debug.log_w(func.__name__, args, kwargs, e)
             raise
         finally:
             conn.close()
