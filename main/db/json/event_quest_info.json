@@ -1,22 +1,27 @@
 {
-  "open": false,
-  "quest_id": 999,
-
-  "name": "DU;ETude (~2024.04.31)",
-
-  "stars": 5,
-
-  "period": "2024.01.24 ~ 2024.04.31",
-
-  "desc_kor": "두 명이 한 팀이 되어 멋있는 피아노 2중주를 완주해주세요! 보상은 정확도 및 제출 순서에 따라 다르게 지급됩니다.",
-  "desc_eng": "Make a team with two players and complete a nice piano duet! Rewards will be given differently depending on accuracy and submit order.",
-
-  "req_kor": "팀원과 함께 한손 클리어",
-  "req_eng": "One-handed clear with teammate",
-
-  "artist": "Charles-Valentin Alkan",
-  "song": "Etude WoO (Etude without opus)",
-  "level_id": 999,
-
-  "exp": "???"
+  "levels": {
+    "1": {
+      "artist": "Charles-Valentin Alkan",
+      "creator": "xitop",
+      "exp": "999",
+      "level_id": [
+        33
+      ],
+      "song": "Etude WoO (Etude without opus)"
+    }
+  },
+  "open": true,
+  "quest": {
+    "desc_eng": "Make a team with two players and complete a nice piano duet! Rewards will be given differently depending on accuracy and submit order.",
+    "desc_kor": "두 명이 한 팀이 되어 멋있는 피아노 2중주를 완주해주세요! 보상은 정확도 및 제출 순서에 따라 다르게 지급됩니다.",
+    "exp": "???",
+    "name": "DU;ETude",
+    "period": "2024.01.24 ~ 2024.04.31",
+    "quest_id": 20,
+    "req": 0,
+    "req_eng": "One-handed clear with teammate",
+    "req_kor": "팀원과 함께 한손 클리어",
+    "stars": 5,
+    "type": 2
+  }
 }

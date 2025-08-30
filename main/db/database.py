@@ -4,11 +4,8 @@ import os
 
 from main.db.ConnFactory import with_connection
 from main.db.exceptions import *
+import main.debug as debug
 
-
-def _console_log(message: str):
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[DBManager] ({now}) | {message}")
 
 def _is_details_dict_valid(details_dict: dict):
     keys = ('main_hand', 'number_of_keys', 'multi_input_direction', 'details')
@@ -58,8 +55,20 @@ def get_event_quest():
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     if data['open']:
-        return find_quest_by_id(data['quest_id'])
+        return find_quest_by_id(data['quest']['quest_id'])
     else: return None
+
+
+def get_event_info():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(BASE_DIR, 'json', 'event_quest_info.json')
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if data['open']: return data
+        else: return None
+    except FileNotFoundError:
+        return None
 
 
 @with_connection
@@ -82,7 +91,6 @@ def add_details(cursor, id: str, details_dict: dict):
             details = :details
             WHERE id = :target_id
             ''', details_dict)
-        _console_log(f"Successfully added details to id: {id}")
     else:
         raise NoSuchUser()
 
@@ -91,7 +99,7 @@ def add_details(cursor, id: str, details_dict: dict):
 def find_user(cursor, query_dict: dict):
     if 'id' in query_dict:
         cursor.execute('''SELECT * FROM users WHERE id = :id''', query_dict)
-        res = cursor.fetchone()[0]
+        res = cursor.fetchone()
         if res is None: raise NoSuchUser()
         return dict(res)
     elif 'username' in query_dict:
@@ -99,7 +107,7 @@ def find_user(cursor, query_dict: dict):
         res = cursor.fetchall()
         if res:
             dict_list = [dict(row) for row in res]
-            return dict_list
+            return dict_list[0]
         else: raise NoSuchUser()
     else:
         raise InvalidDict()
@@ -111,7 +119,6 @@ def delete_user(cursor, user_id: str):
     if cursor.fetchone()[0]:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute("UPDATE users SET deleted_at = :deleted_at WHERE id = :user_id", {"deleted_at": timestamp, "user_id": user_id})
-        _console_log(f"Successfully added 'deleted_at' to id: {user_id}")
     else:
         raise NoSuchUser()
 
@@ -150,7 +157,8 @@ def find_quest_by_stars(cursor, stars: int):
 def find_quest_by_id(cursor, quest_id: int):
     cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
     res = cursor.fetchone()
-    if res is None: raise NoSuchQuest()
+    debug.log(f"Found quest by id: {quest_id}", res)
+    if res is None: return None
     else: return dict(res)
 
 
@@ -158,8 +166,10 @@ def find_quest_by_id(cursor, quest_id: int):
 def find_quest_by_name(cursor, quest_name: str):
     cursor.execute('''SELECT * FROM quests WHERE name = ?''', (quest_name,))
     res = cursor.fetchone()
-    if res is None: raise NoSuchQuest()
-    else: return dict(res)
+    if res is None:
+        raise NoSuchQuest()
+    else:
+        return dict(res)
 
 
 @with_connection
