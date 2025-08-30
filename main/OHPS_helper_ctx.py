@@ -312,10 +312,22 @@ async def quest(interaction: discord.Interaction, quest: str):
     else:
         quest = db.find_quest_by_name(query)
         try:
-            embed = msgformat.quest_embed(quest)
-            await interaction.followup.send(embed=embed)
+            if quest['type'] == 2:
+                event_quest_info = db.get_event_info()
+                if event_quest_info['open']:
+                    quest['json'] = event_quest_info
+                    embed = msgformat.quest_embed(quest)
+                    await interaction.followup.send(embed=embed)
+                else:
+                    await interaction.followup.send(
+                        "요청하신 퀘스트는 현재 도전 가능한 기간이 아닙니다.\n"
+                        "Requested quest cannot be tried currently.")
+
+            else:
+                embed = msgformat.quest_embed(quest)
+                await interaction.followup.send(embed=embed)
         except Exception as e:
-            print(e)
+            debug.log("Exception while generating quest_embed", e=e)
             await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
                                             "An error occurred. Plase try again.")
 
@@ -323,13 +335,27 @@ async def quest(interaction: discord.Interaction, quest: str):
 @bot.tree.command(name="event", description="이벤트 퀘스트 정보를 보여줍니다ㅣShow the info of Event Quest")
 async def event_quest(interaction: discord.Interaction):
     quest = db.get_event_quest()
+    channel_link = "https://discord.com/channels/1184912633548259418/1190695760547827883"
     if quest is None:
-        channel_link = "https://discord.com/channels/1184912633548259418/1190695760547827883"
         await interaction.response.send_message(f"현재 진행 중인 이벤트가 없습니다. 이벤트 공지는 {channel_link} 에서 확인할 수 있습니다.\n"
                                         f"There's no events going on. Event announcement can be checked at {channel_link}.")
     else:
-        event_embed = msgformat.quest_embed(quest)
-        await interaction.response.send_message(embed=event_embed)
+        event_quest_info = db.get_event_info()
+        if event_quest_info is None:
+            await interaction.response.send_message(f"현재 진행 중인 이벤트가 없습니다. 이벤트 공지는 {channel_link} 에서 확인할 수 있습니다.\n"
+                                                    f"There's no events going on. Event announcement can be checked at {channel_link}.")
+        else:
+            debug.log("event_quest_info found (is not None)", event_quest_info)
+            quest_dict = db.find_quest_by_id(event_quest_info['quest']['quest_id'])
+            quest_dict['json'] = event_quest_info
+            try:
+                event_embed = msgformat.quest_embed(quest_dict)
+                await interaction.response.send_message(embed=event_embed)
+            except Exception as e:
+                print(e)
+                debug.log("Exception while generating event_quest_embed", e=e)
+                await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
+                                                "An error occurred. Plase try again.")
 
 
 @bot.tree.command(name="sheet", description="OHPS Info 시트 링크를 제공합니다ㅣGive you OHPS Info sheet link")

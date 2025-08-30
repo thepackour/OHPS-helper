@@ -167,42 +167,83 @@ def collab_quest_data_constructor(cursor, quest: dict):
 ### EVENT QUEST SETTING ###
 @with_connection
 def event_quest_data_constructor(cursor, quest: dict):
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
-    json_path = os.path.join(BASE_DIR, 'json', 'event_quest_info.json')
-    with open(json_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    name = data['name'] + "~ " + data['period'].split("~")
-    stars = data['stars']
-    period = data['period']
-    desc = data['desc_kor'] + "\n" + data['desc_eng']
-    req = data['req_kor'] + "\n" + data['req_eng']
+    quest_info = quest['json']['quest']
+    name = quest_info['name'] + "(~ " + quest_info['period'].split("~")[1] + ")"
+    stars = quest_info['stars']
+    period = quest_info['period']
+    desc = quest_info['desc_kor'] + "\n" + quest_info['desc_eng']
+    req = quest_info['req_kor'] + "\n" + quest_info['req_eng']
+    exp = quest_info['exp']
 
-    level_s = f"{data['artist']} - {data['song']} ({data['exp']} EXP))"
-    clears_s = ""
-    level_id = data['level_id']
+    level_list = quest['json']['levels']
+    level_s = ""
+    level_clears_s = ""
+    quest_clears_s = ""
+    level_id_list = []
+    user_memory = {} # key: user_id , value: u
+    for i, level in level_list.items():
+        level_id_list.append(level['level_id'])
+        level_s += f"**Level #{i}** \n"
+        if is_official(level):
+            level_s += official_str(level)
+        else:
+            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+
+        cursor.execute('''
+            SELECT * FROM level_clears 
+            WHERE level_id = :level_id 
+            ORDER BY id ASC
+            ''', level['level_id'])
+        level_clears_s += f"- Level #{i}\n"
+        level_clears_rows = cursor.fetchall()
+        if level_clears_rows:
+            debug.log(f"Successfully found level clears by level_id: {level['level_id']}", level_clears_rows)
+            level_clears_list = [dict(row) for row in level_clears_rows]
+
+            for clear in level_clears_list:
+                if clear['user_id'] not in user_memory:
+                    cursor.execute('''
+                        SELECT * FROM users 
+                        WHERE id = :user_id 
+                        ''', clear)
+                    user_row = cursor.fetchone()
+                    if user_row is None:
+                        debug.log(f"Failed to find user by user_id: {clear['user_id']} (Maybe logic error)",
+                                  user_row)
+                        raise NoSuchUser()
+                    else:
+                        u = dict(user_row)
+                        user_memory[u['id']] = u
+                        level_clears_s += f"{u['username']}\n"
+                        debug.log(f"Successfully found user by user_id: {clear['user_id']}", u)
+                else:
+                    u = user_memory[clear['user_id']]
+                    level_clears_s += f"- {u['username']}\n"
+        else:
+            debug.log(f"Failed to find level clears by quest_id: {quest_info['quest_id']}", level_clears_rows)
+            level_clears_s += f"none\n"
+        level_clears_s += "\n"
 
     cursor.execute('''
-            SELECT * FROM level_clears 
-            WHERE level_id = ? 
-            ORDER BY id DESC
-            ''', (level_id,))
-    latest_clears_row_list = cursor.fetchall()
-    if latest_clears_row_list:
-        latest_clears_dict_list = [dict(row) for row in latest_clears_row_list]
-        i = 1
-        for clear in latest_clears_dict_list:
-            cursor.execute('''
-                    SELECT * FROM users 
-                    WHERE id = ? 
-                    ''', (clear['user_id'],))
-            user_row = cursor.fetchone()[0]
-            if user_row:
-                u = dict(user_row)
-                clears_s += f"#{i} : {u['username']}\n"
-                i += 1
-            else:
-                raise NoSuchUser()
-    else: clears_s += "none\n"
+                SELECT * FROM quest_clears 
+                WHERE quest_id = :quest_id 
+                ORDER BY id ASC
+                ''', quest_info)
+    quest_clears_rows = cursor.fetchall()
+    if quest_clears_rows:
+        debug.log(f"Successfully found quest clear by quest_id: {quest_info['quest_id']}", quest_clears_rows)
+        quest_clears_list = [dict(row) for row in quest_clears_rows]
+        try:
+            for clear in quest_clears_list:
+                u = user_memory[clear['user_id']]
+                quest_clears_s += f"{u['username']}\n"
+        except Exception as e:
+            debug.log("Exception while making quest_clears_s", e)
+            raise e
+    else:
+        debug.log(f"Failed to find quest clear by quest_id: {quest_info['quest_id']}", quest_clears_rows)
+        quest_clears_s = "none\n"
+    quest_clears_s += "\n"
 
     return {
         'name': name,
@@ -211,5 +252,7 @@ def event_quest_data_constructor(cursor, quest: dict):
         'req': req,
         'desc': desc,
         'level': level_s,
-        'clears': clears_s
+        'exp': exp,
+        'level_clears': level_clears_s,
+        'quest_clears': quest_clears_s
     }

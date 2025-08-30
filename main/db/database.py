@@ -55,8 +55,20 @@ def get_event_quest():
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     if data['open']:
-        return find_quest_by_id(data['quest_id'])
+        return find_quest_by_id(data['quest']['quest_id'])
     else: return None
+
+
+def get_event_info():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(BASE_DIR, 'json', 'event_quest_info.json')
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if data['open']: return data
+        else: return None
+    except FileNotFoundError:
+        return None
 
 
 @with_connection
@@ -145,7 +157,8 @@ def find_quest_by_stars(cursor, stars: int):
 def find_quest_by_id(cursor, quest_id: int):
     cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
     res = cursor.fetchone()
-    if res is None: raise NoSuchQuest()
+    debug.log(f"Found quest by id: {quest_id}", res)
+    if res is None: return None
     else: return dict(res)
 
 

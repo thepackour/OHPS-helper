@@ -261,7 +261,6 @@ def quest_embed(quest: dict): # database 사용
             value=data['latest_clear'],
             inline=False
         )
-        return embed
     elif quest['type'] == 1:
         data = collab_quest_data_constructor(quest)
         stars = data['stars']
@@ -318,11 +317,22 @@ def quest_embed(quest: dict): # database 사용
             inline=False
         )
         embed.add_field(
+            name="올클리어 보상ㅣAll Clear Reward",
+            value=f"{data['exp']} EXP",
+            inline=False
+        )
+        embed.add_field(
             name="클리어자 목록ㅣClear List",
-            value=data['clears'],
+            value=data['level_clears'],
+            inline=False
+        )
+        embed.add_field(
+            name="올클리어자 목록ㅣAll Clear List",
+            value=data['quest_clears'],
             inline=False
         )
     else: raise InvalidQuestType()
+    return embed
 
 
 def leaderboard_embed():

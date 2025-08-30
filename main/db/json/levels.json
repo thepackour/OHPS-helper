@@ -138,5 +138,89 @@
     "song": "Wings",
     "creator": "HanB",
     "exp": 90
+  },
+  {
+    "quest_id": 6,
+    "artist": "Camellia",
+    "song": "Heart of Android : Even If It's Only By Mechanism",
+    "creator": "Team Vega",
+    "exp": 50
+  },
+  {
+    "quest_id": 6,
+    "artist": "iTIC",
+    "song": "Triple Sec",
+    "creator": "Pharah",
+    "exp": 65
+  },
+  {
+    "quest_id": 6,
+    "artist": "q/stol",
+    "song": "LOVE THIS MOMENT",
+    "creator": "PowerFactory",
+    "exp": 60
+  },
+  {
+    "quest_id": 6,
+    "artist": "Orange Wolke",
+    "song": "Stephen's Tiny Cafe",
+    "creator": "-K",
+    "exp": 70
+  },
+  {
+    "quest_id": 7,
+    "artist": "Linear Ring Mix",
+    "song": "Linear Ring Mix",
+    "creator": "Pharah and more",
+    "exp": 100
+  },
+  {
+    "quest_id": 7,
+    "artist": "Frums",
+    "song": "Pictured as Perfect and Plus",
+    "creator": "Team Vega",
+    "exp": 90
+  },
+  {
+    "quest_id": 7,
+    "artist": "Frums",
+    "song": "XNOR XNOR XNOR",
+    "creator": "Felix",
+    "exp": 70
+  },
+  {
+    "quest_id": 7,
+    "artist": "Camellia",
+    "song": "Tojita Sekai",
+    "creator": "PLORALD",
+    "exp": 100
+  },
+  {
+    "quest_id": 8,
+    "artist": "Lime",
+    "song": "Chronomia (Nerfed)",
+    "creator": "Editor AlriC",
+    "exp": 50
+  },
+  {
+    "quest_id": 8,
+    "artist": "Plant Guy",
+    "song": "Fog sees it",
+    "creator": "Plant Guy",
+    "exp": 60
+  },
+  {
+    "quest_id": 8,
+    "artist": "Halv",
+    "song": "Barrage",
+    "creator": "NumbEr07",
+    "exp": 50
+  },
+  {
+    "quest_id": 8,
+    "artist": "AZALI",
+    "song": "CHAOS CONTROL",
+    "creator": "Keqi",
+    "exp": 70
   }
 ]
