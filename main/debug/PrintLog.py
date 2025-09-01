@@ -17,14 +17,15 @@ def log(message: str, result = None, e: Exception = None):
     _unpack_print(result)
 
 
-def log_w(func_name, args, kwargs, result = None):
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def log_w(func_name, args, kwargs, start_t, result = None):
+    now = datetime.datetime.now()
     caller = inspect.stack()[2]
-    print(f"\n[Log Info | with_connection] ({now})" + ("-" * 50))
+    print(f"\n[Log Info | with_connection] ({now.strftime("%Y-%m-%d %H:%M:%S")})" + ("-" * 50))
     if result is not None and type(result) is Exception:
         print(f"[!] EXCEPTION INFO : {result}")
     print(f"Called from {caller.function} in {caller.filename}:{caller.lineno}")
     print(f"Executing {func_name} with args={args}, kwargs={kwargs}")
+    print(f"Execution time : {int((now - start_t).total_seconds() * 1000)} ms")
     print(f"Returned:")
     _unpack_print(result)
 

@@ -69,130 +69,6 @@ async def on_member_join(member):
     print(f"[{timestamp()} | New User] {member.name} ({member.id})\n")
 
 
-# @bot.event
-# async def on_message(message):
-#     developer = [608914438640369676, 433224189194010654]
-#     channel = bot.get_channel(1199387197963513887)
-#     dev_channel = [1195221597003456642, 1195037894402908291]
-#     isDev = (message.author.id in developer) and (message.channel.id in dev_channel)
-#     segment = message.content.split("/./")
-#     # [0]: one/all
-#     # [1]: submit_date
-#     # [2]: user_id
-#     # [3]: quest_name
-#     # [4]: reward_exp
-#     # [5]: level_name
-#
-#     if isDev and (message.content == "help"):
-#         await message.channel.send("one/./[submit_date]/./[user_id]/./[quest_name]/./[reward_EXP]/./[level_name]\n"
-#                            "all/./[submit_date]/./[user_id]/./[quest_name]/./[reward_EXP]")
-#
-#     if isDev and (segment[0] == "one"):
-#         db_arr = DB.worksheet(sheet1).get_all_values()
-#         clear_arr = DB.worksheet(sheet2).get_all_values()
-#         print(f"[{timestamp()} | Admin_command] /one")
-#         for i in segment:
-#             print(i, end=" / ")
-#         y = 0
-#         while str(segment[2]) != db_arr[y][0]:
-#             y = y + 1
-#         before_exp = db_arr[y][3]
-#         before_level = db_arr[y][2]
-#         DB.worksheet(sheet1).update_cell(y + 1,4,int(before_exp)+int(segment[4]))
-#         after_exp = DB.worksheet(sheet1).cell(y + 1, 4).value
-#         after_level = DB.worksheet(sheet1).cell(y + 1, 3).value
-#         DB.worksheet(sheet1).update_cell(y + 1, 7, f"{segment[3]}ㅣ{segment[5]}")
-#         yy = 0
-#         while str(segment[3]) != clear_arr[yy][0]:
-#             yy = yy + 1
-#         for i in range(0, int(clear_arr[yy+2][0])):
-#             if segment[5] == clear_arr[yy+i][1]:
-#                 DB.worksheet(sheet2).update_cell(yy+i+1,4,f'{db_arr[y][1]} ({segment[1]})')
-#                 break
-#         quest_history = DB.worksheet(sheet1).cell(y+1, 12).value
-#         if quest_history == 'none':
-#             quest_history = f'{segment[3]}ㅣ{segment[5]}\n'
-#         else:
-#             quest_history = quest_history + f'{segment[3]}ㅣ{segment[5]}\n'
-#         DB.worksheet(sheet1).update_cell(y+1, 12, quest_history)
-#         levelup = f"({before_level} Level → {after_level} Level)" if after_level > before_level else f"({after_level} Level)"
-#         embed = discord.Embed(title="퀘스트 완료ㅣQuest Complete",
-#                               description=f"Submitted on {segment[1]}",
-#                               colour=0xffffcf)
-#         embed.add_field(
-#             name="플레이어 이름ㅣPlayer name",
-#             value=db_arr[y][1],
-#             inline=True
-#         )
-#         embed.add_field(
-#             name="경험치 & 레벨ㅣEXP & Level",
-#             value=f"{before_exp}EXP → {after_exp}EXP (+{segment[4]})\n{levelup}",
-#             inline=True
-#         )
-#         embed.add_field(
-#             name="퀘스트 이름ㅣQuest name",
-#             value=segment[3],
-#             inline=True
-#         )
-#         embed.add_field(
-#             name="플레이한 레벨ㅣPlayed level",
-#             value=segment[5],
-#             inline=True
-#         )
-#         await channel.send(f"<@{int(segment[2])}>")
-#         await channel.send(embed=embed)
-#
-#     if isDev and (segment[0] == "all"):
-#         db_arr = DB.worksheet(sheet1).get_all_values()
-#         clear_arr = DB.worksheet(sheet2).get_all_values()
-#         print(f"[{timestamp()} | Admin_command] /all")
-#         for i in segment:
-#             print(i, end=" / ")
-#         y = 0
-#         while str(segment[2]) != db_arr[y][0]:
-#             y = y + 1
-#         before_exp = db_arr[y][3]
-#         before_level = db_arr[y][2]
-#         DB.worksheet(sheet1).update_cell(y + 1, 4, int(before_exp) + int(segment[4]))
-#         after_exp = DB.worksheet(sheet1).cell(y + 1, 4).value
-#         after_level = DB.worksheet(sheet1).cell(y + 1, 3).value
-#         DB.worksheet(sheet1).update_cell(y + 1, 7, f"{segment[3]} - **All Clear**")
-#         yy = 0
-#         while str(segment[3]) != clear_arr[yy][0]:
-#             yy = yy + 1
-#         DB.worksheet(sheet2).update_cell(yy + 1, 5, f'{db_arr[y][1]} ({segment[1]})')
-#         quest_history = DB.worksheet(sheet1).cell(y+1, 12).value
-#         if quest_history == 'none':
-#             quest_history = f'{segment[3]}ㅣAll Clear\n'
-#         else:
-#             quest_history = quest_history + f'{segment[3]}ㅣAll Clear\n'
-#         DB.worksheet(sheet1).update_cell(y+1, 12, quest_history)
-#         levelup = f"({before_level} Level → {after_level} Level)" if after_level > before_level else f"({after_level} Level)"
-#         embed = discord.Embed(title="퀘스트 올클리어ㅣQuest All Clear",
-#                               description=f"Submitted on {segment[1]}",
-#                               colour=0xffff9f)
-#         embed.add_field(
-#             name="플레이어 이름ㅣPlayer name",
-#             value=db_arr[y][1],
-#             inline=True
-#         )
-#         embed.add_field(
-#             name="경험치 & 레벨ㅣEXP & Level",
-#             value=f"{before_exp}EXP → {after_exp}EXP (+{segment[4]})\n{levelup}",
-#             inline=True
-#         )
-#         embed.add_field(
-#             name="퀘스트 이름ㅣQuest name",
-#             value=segment[3],
-#             inline=True
-#         )
-#         await channel.send(f"<@{int(segment[2])}>")
-#         await channel.send(embed=embed)
-#
-#     if (message.author.id in developer) and (segment[0] == 'del'):
-#         channel.delete_messages()
-
-
 @bot.tree.command(name="ping", description="현재 봇의 응답속도를 보여줍니다ㅣShows the current latency of the bot")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message(f"Pong! `{bot.latency}ms`")
@@ -299,16 +175,29 @@ async def level(interaction: discord.Interaction, level: int):
 
 
 @bot.tree.command(name="quest", description="퀘스트 정보를 보여줍니다ㅣShow the info of Quest")
-@app_commands.describe(quest = "퀘스트 이름ㅣQuest name")
+@app_commands.describe(quest = "퀘스트 이름 또는 퀘스트 난이도 (1~5)ㅣQuest name or quest difficulty (1~5)")
 async def quest(interaction: discord.Interaction, quest: str):
     await interaction.response.defer()
 
-    quest_list = db.get_quest_name_list()
-    quest_name_list = [q['name'] for q in quest_list]
-    query = most_similar(quest, quest_name_list)
+    if quest.isdigit(): query = int(quest)
+    else:
+        quest_list = db.get_quest_name_list()
+        quest_name_list = [q['name'] for q in quest_list]
+        query = most_similar(quest, quest_name_list)
 
-    if query is None or type(query) is not str:
+    if (query is None) or (type(query) not in (str, int)):
         await interaction.followup.send("퀘스트를 찾을 수 없습니다. 다시 시도해주세요.\nCan't find the quest. Please try again.")
+    elif type(query) is int:
+        try:
+            embed = msgformat.quest_embed(query)
+            await interaction.followup.send(embed=embed)
+        except db.NoSuchDifficulty or db.NoSuchQuest:
+            await interaction.followup.send("1부터 5 사이의 값만 입력해주세요.\n"
+                                            "Please enter a number between 1 and 5.")
+        except Exception as e:
+            debug.log("Exception while generating quest_embed", e=e)
+            await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
+                                            "An error occurred. Plase try again.")
     else:
         quest = db.find_quest_by_name(query)
         try:

@@ -155,7 +155,7 @@ Bingsu (P)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 - Plum - R (New Version) (https://youtu.be/U_VsIlN1nqI)
 
-Chyaryam (P)
+Chyaryam (A)
 - Linear ring Mix (https://youtu.be/dCY0X3BKlEg)
 
 OE (A)
@@ -210,7 +210,7 @@ Nichipe (P)
 토끼로봇 (A)
 - iTIC - We Wish You a Wonderful Christmas (https://youtu.be/nzwSA0lXVWI)
 
-초보잼 (P)
+초보잼 (A)
 - iTIC - We Wish You a Wonderful Christmas (https://youtu.be/nzwSA0lXVWI)
 
 BWen (A)
@@ -242,7 +242,7 @@ GamingGooseTV (P)
 지네고 (A)
 - t+pazolite - Sugary Sweets (https://youtu.be/5cnQwT64XRs?t=81)
 
-Logal0 (P)
+Logal0 (A)
 - Synthion - Light Years Away (https://youtu.be/t8AcIn1nCOI)
 
 폐브 (A)
@@ -253,6 +253,12 @@ Fielis (A)
 
 연석이2 (A)
 - seatrus - Cheating House (https://youtu.be/Ex5qSBNhyDM)
+
+CyanAqua (A)
+- Monokuro - Black Rose (https://youtu.be/O6h32jzLmQM)
+
+keqi (A)
+- AZALI - CHAOS CONTROL (https://youtu.be/EbGvBBlJqMY)
 
 
 
@@ -280,7 +286,6 @@ Fielis (A)
 
 
 
-
 [허가 템플릿(영어)]
 Hello, this is 더파, currently planning the OHPS project.
 I'm reaching out regarding the use of your level, ____.
@@ -295,7 +300,3 @@ I'd like to use the following levels created by you:
 I initially launched the server early last year, but had to suspend operations for various reasons. I'm now preparing to relaunch and plan to proceed only after obtaining permission for all levels currently listed in my [sheet](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?gid=957395609#gid=957395609>).
 
 I look forward to your positive response. Thank you for your time.
-
-
-
-

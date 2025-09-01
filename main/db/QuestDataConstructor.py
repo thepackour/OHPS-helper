@@ -1,11 +1,7 @@
-import json
-import os
-
 from main.db.ConnFactory import with_connection
 from main.db import NoSuchUser, NoSuchLevel
 from main.msgformat.variables import requirement_list
 import main.debug as debug
-from main.msgformat.OfficialLevels import *
 
 
 number_of_collab_parts = {
@@ -32,6 +28,15 @@ def _part_parse(part: str):
     return tuple(part.split('-'))
 
 
+def _str_constructor(level: dict):
+    s = ""
+    if level['artist']: s += f"{level['artist']} - "
+    s += f"{level['song']} "
+    if level['creator']: s += f"(by {level['creator']}) "
+    s += f"({level['exp']} EXP) \n"
+    return s
+
+
 @with_connection
 def quest_data_constructor(cursor, quest: dict):
     stars = quest['stars']
@@ -49,10 +54,7 @@ def quest_data_constructor(cursor, quest: dict):
     latest_s = ""
     for i, level in enumerate(level_list, start=1):
         level_s += f"**Level #{i}** \n"
-        if is_official(level):
-            level_s += official_str(level)
-        else:
-            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+        level_s += _str_constructor(level)
 
         cursor.execute('''
         SELECT * FROM level_clears 
@@ -184,10 +186,7 @@ def event_quest_data_constructor(cursor, quest: dict):
     for i, level in level_list.items():
         level_id_list.append(level['level_id'])
         level_s += f"**Level #{i}** \n"
-        if is_official(level):
-            level_s += official_str(level)
-        else:
-            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+        level_s += _str_constructor(level)
 
         cursor.execute('''
             SELECT * FROM level_clears 

@@ -15,18 +15,19 @@ def _is_details_dict_valid(details_dict: dict):
     return True
 
 def _find_user(cursor, user_id: str):
-    cursor.execute('''SELECT * FROM users WHERE id = ?''', user_id)
+    cursor.execute('''SELECT * FROM users WHERE id = ?''', (user_id,))
     if cursor.fetchone()[0] is None: raise NoSuchUser()
     return cursor.fetchone()
 
 def _find_quest(cursor, quest_id: int):
-    cursor.execute('''SELECT * FROM quests WHERE id = ?''', quest_id)
-    if cursor.fetchone()[0] is None: raise NoSuchQuest()
-    return cursor.fetchone()
+    cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
+    res = cursor.fetchone()[0]
+    if res is None: raise NoSuchQuest()
+    return res
 
 def _find_level_clears(cursor, quest_id: int):
     if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM level_clears WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM level_clears WHERE quest_id = ?''', (quest_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: (x['id'], x['level_id']))
@@ -34,19 +35,20 @@ def _find_level_clears(cursor, quest_id: int):
 
 def _find_quest_clears(cursor, quest_id: int):
     if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM quest_clears WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM quest_clears WHERE quest_id = ?''', (quest_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: x['id'])
     return dict_list
 
 def _find_levels(cursor, quest_id: int):
-    if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM levels WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM levels WHERE quest_id = ?''', (quest_id,))
     res = cursor.fetchall()
-    dict_list = [dict(row) for row in res]
-    dict_list.sort(key=lambda x: x['id'])
-    return dict_list #
+    if res:
+        dict_list = [dict(row) for row in res]
+        dict_list.sort(key=lambda x: x['id'])
+        return dict_list
+    else: return None
 
 
 def get_event_quest():
@@ -141,7 +143,7 @@ def get_quest_name_list(cursor):
 
 
 @with_connection
-def find_quest_by_stars(cursor, stars: int):
+def find_quests_by_stars(cursor, stars: int):
     if stars < 1 or stars > 5: raise InvalidStars()
     else:
         cursor.execute('''SELECT * FROM quests WHERE stars = ?''', (stars,))

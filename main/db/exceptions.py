@@ -25,3 +25,7 @@ class NoSuchQuest(Exception):
 class InvalidStars(Exception):
     def __str__(self):
         return "Invalid stars"
+
+class NoSuchDifficulty(Exception):
+    def __str__(self):
+        return "No such difficulty, maybe the value is not between 1~5."
