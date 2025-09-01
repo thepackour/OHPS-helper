@@ -38,7 +38,7 @@ def profile_embed(type: str, user: dict):
         )
         embed.add_field(
             name="다음 레벨까지 남은 경험치ㅣEXP left until next level",
-            value=minEXP(user['level'])-user['exp'],
+            value=minEXP(user['level'] + 1)-user['exp'],
             inline=False
         )
         return embed
@@ -47,16 +47,22 @@ def profile_embed(type: str, user: dict):
             level_clear_list = db.find_level_clears(user['id'])
             quest_clear_list = db.find_quest_clears(user['id'])
 
-            level_id_list = [clear['level_id'] for clear in level_clear_list]
-            quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+            if level_clear_list:
+                level_id_list = [clear['level_id'] for clear in level_clear_list]
+                level_list = db.find_levels(level_id_list)
+            else: level_list = []
 
-            level_list = db.find_levels(level_id_list)
-            quest_list = db.find_levels(quest_id_list)
+
+            if quest_clear_list:
+                quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+                quest_list = db.find_levels(quest_id_list)
+            else: quest_list = []
+
         except Exception as e:
             debug.log("Failed to generate profile_embed", e=e)
 
         s = ""
-        last_clear = "none"
+        last_clear = "None"
         if level_list:
             for clear in level_clear_list:
                 s += quest_list[clear['quest_id']]['name']
@@ -72,7 +78,9 @@ def profile_embed(type: str, user: dict):
                 for clear in quest_clear_list:
                     s += quest_list[clear['quest_id']]['name']
                     s += "ㅣAll Clear\n"
-        else: s = "none"
+        else:
+            s = "None"
+            last_clear = "None"
 
         embed = discord.Embed(
             title="유저 프로필ㅣUser Profile",
@@ -136,16 +144,21 @@ def profile_embed(type: str, user: dict):
             level_clear_list = db.find_level_clears(user['id'])
             quest_clear_list = db.find_quest_clears(user['id'])
 
-            level_id_list = [clear['level_id'] for clear in level_clear_list]
-            quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+            if level_clear_list:
+                level_id_list = [clear['level_id'] for clear in level_clear_list]
+                level_list = db.find_levels(level_id_list)
+            else: level_list = []
 
-            level_list = db.find_levels(level_id_list)
-            quest_list = db.find_levels(quest_id_list)
+            if quest_clear_list:
+                quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+                quest_list = db.find_levels(quest_id_list)
+            else: quest_list = []
+
         except Exception as e:
             debug.log("Failed to generate profile_embed", e=e)
 
         s = ""
-        last_clear = "none"
+        last_clear = "None"
         if level_list:
             for clear in level_clear_list:
                 s += quest_list[clear['quest_id']]['name']
@@ -155,14 +168,15 @@ def profile_embed(type: str, user: dict):
                 s += level_list[clear['level_id']]['song']
                 s += "\n"
 
-            last_clear = s.split('\n')[-2] if s else "none"
+            last_clear = s.split('\n')[-2] if s else "None"
 
             if quest_list:
                 for clear in quest_clear_list:
                     s += quest_list[clear['quest_id']]['name']
                     s += "ㅣAll Clear\n"
         else:
-            s = "none"
+            s = "None"
+            last_clear = "None"
 
         embed = discord.Embed(
             title="유저 프로필ㅣUser Profile",
@@ -188,7 +202,7 @@ def profile_embed(type: str, user: dict):
         )
         embed.add_field(
             name="다음 레벨까지 남은 경험치ㅣEXP left until next level",
-            value=minEXP(user['level']) - user['exp'],
+            value=minEXP(user['level'] + 1) - user['exp'],
             inline=False
         )
         embed.add_field(

@@ -89,15 +89,19 @@ async def rank(interaction: discord.Interaction):
 async def register(interaction: discord.Interaction):
     await interaction.response.defer()
     try:
-        db.add_user(interaction.user.id)
-        delta_tier = os.getenv('DELTA_TIER')
+        db.add_user({'id': interaction.user.id, 'username': interaction.user.name})
+        delta_tier = int(os.getenv('DELTA_TIER'))
         delta_tier_role = interaction.guild.get_role(int(delta_tier))
         await interaction.user.add_roles(delta_tier_role)
         await interaction.followup.send("성공적으로 등록되었습니다! `/myprofile`로 프로필을 볼 수 있습니다!\n"
                                         "Successfully registered! You can view your profile with `/myprofile`!")
-    except db.exceptions.ExistingUser():
+    except db.exceptions.ExistingUser:
         await interaction.followup.send("이미 등록된 유저입니다. `/myprofile`에서 프로필을 확인하세요.\n"
                                         "You've been already registered. See your profile with `/myprofile`.")
+    except Exception as e:
+        print(e)
+        await interaction.followup.send("오류가 발생했습니다. 다시 시도해주세요.\n"
+                                        "An error occurred. Plase try again.")
 
 
 @bot.tree.command(name="details", description="타법의 세부사항을 등록 및 수정합니다.ㅣRegister or edit the detailed info about your play")
@@ -111,6 +115,7 @@ async def details(interaction: discord.Interaction, leftright: str, keys: str, i
 
     try:
         details_dict = {
+            'target_id': interaction.user.id,
             'main_hand': leftright,
             'number_of_keys': keys,
             'multi_input_direction': inout,

@@ -16,13 +16,12 @@ def _is_details_dict_valid(details_dict: dict):
 
 def _find_user(cursor, user_id: str):
     cursor.execute('''SELECT * FROM users WHERE id = ?''', (user_id,))
-    if cursor.fetchone()[0] is None: raise NoSuchUser()
     return cursor.fetchone()
 
 def _find_quest(cursor, quest_id: int):
     cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
     res = cursor.fetchone()[0]
-    if res is None: raise NoSuchQuest()
+    if res is None: return None
     return res
 
 def _find_level_clears(cursor, quest_id: int):
@@ -179,9 +178,11 @@ def find_level_clears(cursor, user_id: str):
     if _find_user(cursor, user_id) is None: raise NoSuchUser()
     cursor.execute('''SELECT * FROM level_clears WHERE user_id = ?''', (user_id,))
     res = cursor.fetchall()
-    dict_list = [dict(row) for row in res]
-    dict_list.sort(key=lambda x: x['id'])
-    return dict_list
+    if res:
+        dict_list = [dict(row) for row in res]
+        dict_list.sort(key=lambda x: x['id'])
+        return dict_list
+    return []
 
 
 @with_connection

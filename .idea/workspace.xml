@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="/quest 기능 모두 구현 완료" />
+    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="/quest 기능 모두 구현 완료">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/calc/EXPLevelFormula.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/calc/EXPLevelFormula.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
