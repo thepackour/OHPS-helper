@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="Re-wrote all codes" />
+    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="일반 퀘스트 찾기, /rank 디버깅 완료">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/DBInit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/DBInit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/QuestDataConstructor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/QuestDataConstructor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/json/event_quest_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/json/event_quest_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/db/json/levels.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/json/levels.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +44,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/thepackour/OHPS-helper.git&quot;,
-    &quot;accountId&quot;: &quot;7d58ca03-f5f9-4cb1-8aef-3c2fd45334a5&quot;
+    &quot;accountId&quot;: &quot;8608086d-e825-41f2-9a28-3b6e539c77c2&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -58,9 +68,9 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Repos/OHPS-helper/test",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "git-widget-placeholder": "rewritten-func-debug",
+    "last_opened_file_path": "C:/Users/tpo56/PycharmProjects/OHPS-helper",
+    "settings.editor.selected.configurable": "proofread"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -68,11 +78,11 @@
       <recent name="D:\Repos\OHPS-helper\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tpo56\PycharmProjects\OHPS-helper\main" />
       <recent name="D:\Repos\OHPS-helper\main\db\json" />
       <recent name="D:\Repos\OHPS-helper\main\credentials" />
       <recent name="D:\Repos\OHPS-helper\main\sheet" />
       <recent name="D:\Repos\OHPS-helper\test" />
-      <recent name="D:\Repos\OHPS-helper\main\db" />
     </key>
   </component>
   <component name="RunManager" selected="Python.OHPS_helper_ctx">
@@ -227,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756399713124</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="일반 퀘스트 찾기, /rank 디버깅 완료">
+      <option name="closed" value="true" />
+      <created>1756488464385</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756488464385</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,6 +262,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="from previous folder &amp; .env file added" />
     <MESSAGE value="Re-wrote all codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-wrote all codes" />
+    <MESSAGE value="일반 퀘스트 찾기, /rank 디버깅 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="일반 퀘스트 찾기, /rank 디버깅 완료" />
   </component>
 </project>
