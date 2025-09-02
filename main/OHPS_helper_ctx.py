@@ -104,7 +104,7 @@ async def register(interaction: discord.Interaction):
                                         "An error occurred. Plase try again.")
 
 
-@bot.tree.command(name="details", description="타법의 세부사항을 등록 및 수정합니다.ㅣRegister or edit the detailed info about your play")
+@bot.tree.command(name="details", description="타법의 세부사항을 등록 및 수정합니다.ㅣRegisters or edit the detailed info about your play")
 @app_commands.describe(
     leftright = "사용하는 손ㅣYour main hand (Left/Right)",
     keys= "사용하는 키ㅣKeys that you use",
@@ -179,7 +179,7 @@ async def level(interaction: discord.Interaction, level: int):
                                             f"The total EXP to reach **{level} level** is **{calc_exp} EXP**, **{-1*difference}** lower than your current EXP.")
 
 
-@bot.tree.command(name="quest", description="퀘스트 정보를 보여줍니다ㅣShow the info of Quest")
+@bot.tree.command(name="quest", description="퀘스트 정보를 보여줍니다ㅣShows the info of Quest")
 @app_commands.describe(quest = "퀘스트 이름 또는 퀘스트 난이도 (1~5)ㅣQuest name or quest difficulty (1~5)")
 async def quest(interaction: discord.Interaction, quest: str):
     await interaction.response.defer()
@@ -226,7 +226,7 @@ async def quest(interaction: discord.Interaction, quest: str):
                                             "An error occurred. Plase try again.")
 
 
-@bot.tree.command(name="event", description="이벤트 퀘스트 정보를 보여줍니다ㅣShow the info of Event Quest")
+@bot.tree.command(name="event", description="이벤트 퀘스트 정보를 보여줍니다ㅣShows the info of Event Quest")
 async def event_quest(interaction: discord.Interaction):
     quest = db.get_event_quest()
     channel_link = "https://discord.com/channels/1184912633548259418/1190695760547827883"
@@ -252,9 +252,17 @@ async def event_quest(interaction: discord.Interaction):
                                                 "An error occurred. Plase try again.")
 
 
-@bot.tree.command(name="sheet", description="OHPS Info 시트 링크를 제공합니다ㅣGive you OHPS Info sheet link")
+@bot.tree.command(name="sheet", description="OHPS Info 시트 링크를 제공합니다ㅣGives you OHPS Info sheet link")
 async def sheet(interaction: discord.Interaction):
-    await interaction.response.send_message('[여기를 클릭하세요!ㅣClick Here!](https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?usp=sharing)')
+    await interaction.response.send_message('## OHPS Info Sheet\n'
+                                            '- [여기를 클릭하세요!ㅣClick Here!](<https://docs.google.com/spreadsheets/d/11swc3daTDK7USlzFbhBRBDC4nMbqsanlyThaA9lvloA/edit?usp=sharing>)')
 
+
+@bot.tree.command(name="form", description="영상 제출 폼 링크를 제공합니다ㅣGives you Video Submission Form link")
+async def form(interaction: discord.Interaction):
+    await interaction.response.send_message('## 퀘스트 영상 제출 폼ㅣQuest Video Submission Form\n'
+                                            '- [여기를 클릭하세요!ㅣClick Here!](<https://forms.gle/xKaB8prHGxnjTVFf6>)\n'
+                                            '## 티어 승급 영상 제출 폼ㅣTier Elevation Video Submission Form\n'
+                                            '- [여기를 클릭하세요!ㅣClick Here!](<https://forms.gle/B1twVnyvKMU24z5c9>)\n')
 
 bot.run(token)
