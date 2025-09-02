@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="일반 퀘스트 찾기, /rank 디버깅 완료">
+    <list default="true" id="f661941e-70c4-4bf7-bb2d-43d9f1d9a2d9" name="Changes" comment="/register, /myprofile 디버깅 완료 (1,3,4 완료)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/OHPS_helper_ctx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/DBInit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/DBInit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/QuestDataConstructor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/QuestDataConstructor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/json/event_quest_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/json/event_quest_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/db/json/levels.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/db/json/levels.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/msgformat/EmbedGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="rewritten-func-debug" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in test.executor": "Run",
-    "Python.OHPS_helper_ctx.executor": "Run",
-    "Python.localdb.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.memorydb.executor": "Run",
-    "Python.test2.executor": "Run",
-    "Python.word_similar.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "rewritten-func-debug",
-    "last_opened_file_path": "C:/Users/tpo56/PycharmProjects/OHPS-helper",
-    "settings.editor.selected.configurable": "proofread"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OHPS_helper_ctx.executor&quot;: &quot;Run&quot;,
+    &quot;Python.localdb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.memorydb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.word_similar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tpo56/PycharmProjects/OHPS-helper&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Repos\OHPS-helper\test" />
@@ -245,7 +238,31 @@
       <option name="project" value="LOCAL" />
       <updated>1756488464385</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="/quest 디버깅 완료, stars에 따른 퀘스트 검색 기능 구현해야할듯">
+      <option name="closed" value="true" />
+      <created>1756574425738</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756574425738</updated>
+    </task>
+    <task id="LOCAL-00005" summary="/quest 기능 모두 구현 완료">
+      <option name="closed" value="true" />
+      <created>1756737256800</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1756737256800</updated>
+    </task>
+    <task id="LOCAL-00006" summary="/register, /myprofile 디버깅 완료 (1,3,4 완료)">
+      <option name="closed" value="true" />
+      <created>1756740790395</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756740790395</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,6 +280,9 @@
     <MESSAGE value="from previous folder &amp; .env file added" />
     <MESSAGE value="Re-wrote all codes" />
     <MESSAGE value="일반 퀘스트 찾기, /rank 디버깅 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="일반 퀘스트 찾기, /rank 디버깅 완료" />
+    <MESSAGE value="/quest 디버깅 완료, stars에 따른 퀘스트 검색 기능 구현해야할듯" />
+    <MESSAGE value="/quest 기능 모두 구현 완료" />
+    <MESSAGE value="/register, /myprofile 디버깅 완료 (1,3,4 완료)" />
+    <option name="LAST_COMMIT_MESSAGE" value="/register, /myprofile 디버깅 완료 (1,3,4 완료)" />
   </component>
 </project>

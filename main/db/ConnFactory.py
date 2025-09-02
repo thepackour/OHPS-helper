@@ -1,3 +1,4 @@
+import datetime
 import sqlite3
 from functools import wraps
 
@@ -11,17 +12,18 @@ def create_connection(db_file='test.db'):
 def with_connection(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
+        start_t = datetime.datetime.now()
         conn = create_connection()
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         try:
             result = func(cursor, *args, **kwargs)
-            debug.log_w(func.__name__, args, kwargs, result)
+            debug.log_w(func.__name__, args, kwargs, start_t, result)
             conn.commit()
             return result
         except Exception as e:
             conn.rollback()
-            debug.log_w(func.__name__, args, kwargs, e)
+            debug.log_w(func.__name__, args, kwargs, start_t, e)
             raise
         finally:
             conn.close()

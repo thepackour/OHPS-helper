@@ -18,7 +18,7 @@
     "stars": 1,
     "type": 0,
     "req": 1,
-    "exp": 80
+    "exp": 70
   },
   {
     "name": "Peaceful & Healing",
@@ -32,14 +32,14 @@
     "stars": 2,
     "type": 0,
     "req": 1,
-    "exp": 120
+    "exp": 240
   },
   {
     "name": "Swingggg",
     "stars": 2,
     "type": 0,
     "req": 1,
-    "exp": 160
+    "exp": 200
   },
   {
     "name": "Assemble! (Easy)",
@@ -50,10 +50,10 @@
   },
   {
     "name": "Gimmicks!",
-    "stars": 2,
+    "stars": 1,
     "type": 0,
     "req": 1,
-    "exp": 180
+    "exp": 90
   },
   {
     "name": "Introduction to 4K",
@@ -88,39 +88,32 @@
     "stars": 4,
     "type": 0,
     "req": 3,
-    "exp": 700
+    "exp": 780
   },
   {
     "name": "wBeEiArTd",
     "stars": 4,
     "type": 0,
     "req": 1,
-    "exp": 560
-  },
-  {
-    "name": "wBeEiArTd",
-    "stars": 4,
-    "type": 0,
-    "req": 1,
-    "exp": 560
+    "exp": 750
   },
   {
     "name": "Assemble! (Hard)",
     "stars": 4,
     "type": 1,
     "req": 0,
-    "exp": 700
+    "exp": 750
   },
   {
     "name": "Way To Reach ZENITH",
     "stars": 4,
     "type": 0,
     "req": 1,
-    "exp": 600
+    "exp": 800
   },
   {
     "name": "Little Fast Levels",
-    "stars": 5,
+    "stars": 4,
     "type": 0,
     "req": 1,
     "exp": 880

@@ -38,7 +38,7 @@ def profile_embed(type: str, user: dict):
         )
         embed.add_field(
             name="다음 레벨까지 남은 경험치ㅣEXP left until next level",
-            value=minEXP(user['level'])-user['exp'],
+            value=minEXP(user['level'] + 1)-user['exp'],
             inline=False
         )
         return embed
@@ -47,16 +47,22 @@ def profile_embed(type: str, user: dict):
             level_clear_list = db.find_level_clears(user['id'])
             quest_clear_list = db.find_quest_clears(user['id'])
 
-            level_id_list = [clear['level_id'] for clear in level_clear_list]
-            quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+            if level_clear_list:
+                level_id_list = [clear['level_id'] for clear in level_clear_list]
+                level_list = db.find_levels(level_id_list)
+            else: level_list = []
 
-            level_list = db.find_levels(level_id_list)
-            quest_list = db.find_levels(quest_id_list)
+
+            if quest_clear_list:
+                quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+                quest_list = db.find_levels(quest_id_list)
+            else: quest_list = []
+
         except Exception as e:
             debug.log("Failed to generate profile_embed", e=e)
 
         s = ""
-        last_clear = "none"
+        last_clear = "None"
         if level_list:
             for clear in level_clear_list:
                 s += quest_list[clear['quest_id']]['name']
@@ -72,7 +78,9 @@ def profile_embed(type: str, user: dict):
                 for clear in quest_clear_list:
                     s += quest_list[clear['quest_id']]['name']
                     s += "ㅣAll Clear\n"
-        else: s = "none"
+        else:
+            s = "None"
+            last_clear = "None"
 
         embed = discord.Embed(
             title="유저 프로필ㅣUser Profile",
@@ -136,16 +144,21 @@ def profile_embed(type: str, user: dict):
             level_clear_list = db.find_level_clears(user['id'])
             quest_clear_list = db.find_quest_clears(user['id'])
 
-            level_id_list = [clear['level_id'] for clear in level_clear_list]
-            quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+            if level_clear_list:
+                level_id_list = [clear['level_id'] for clear in level_clear_list]
+                level_list = db.find_levels(level_id_list)
+            else: level_list = []
 
-            level_list = db.find_levels(level_id_list)
-            quest_list = db.find_levels(quest_id_list)
+            if quest_clear_list:
+                quest_id_list = [clear['quest_id'] for clear in level_clear_list]
+                quest_list = db.find_levels(quest_id_list)
+            else: quest_list = []
+
         except Exception as e:
             debug.log("Failed to generate profile_embed", e=e)
 
         s = ""
-        last_clear = "none"
+        last_clear = "None"
         if level_list:
             for clear in level_clear_list:
                 s += quest_list[clear['quest_id']]['name']
@@ -155,14 +168,15 @@ def profile_embed(type: str, user: dict):
                 s += level_list[clear['level_id']]['song']
                 s += "\n"
 
-            last_clear = s.split('\n')[-2] if s else "none"
+            last_clear = s.split('\n')[-2] if s else "None"
 
             if quest_list:
                 for clear in quest_clear_list:
                     s += quest_list[clear['quest_id']]['name']
                     s += "ㅣAll Clear\n"
         else:
-            s = "none"
+            s = "None"
+            last_clear = "None"
 
         embed = discord.Embed(
             title="유저 프로필ㅣUser Profile",
@@ -188,7 +202,7 @@ def profile_embed(type: str, user: dict):
         )
         embed.add_field(
             name="다음 레벨까지 남은 경험치ㅣEXP left until next level",
-            value=minEXP(user['level']) - user['exp'],
+            value=minEXP(user['level'] + 1) - user['exp'],
             inline=False
         )
         embed.add_field(
@@ -230,108 +244,144 @@ def profile_embed(type: str, user: dict):
     return None
 
 
-def quest_embed(quest: dict): # database 사용
-    if quest['type'] == 0:
-        data = quest_data_constructor(quest)
-        stars = data['stars']
-        difficulty = f"Difficulty : {stars} "
-        difficulty += "star" if stars == 1 else "stars"
-        embed = discord.Embed(
-            title=data['name'],
-            description=difficulty,
-            colour=stars_colour_list[stars]
-        )
-        embed.add_field(
-            name="조건ㅣRequirement",
-            value=data['req'],
-            inline=False
-        )
-        embed.add_field(
-            name="레벨ㅣLevels",
-            value=data['levels'],
-            inline=False
-        )
-        embed.add_field(
-            name="올클리어 보상ㅣAll Clear Reward",
-            value=f"{data['exp']} EXP",
-            inline=False
-        )
-        embed.add_field(
-            name="최근 클리어자 목록ㅣRecent Clear List",
-            value=data['latest_clear'],
-            inline=False
-        )
-    elif quest['type'] == 1:
-        data = collab_quest_data_constructor(quest)
-        stars = data['stars']
-        difficulty = f"Difficulty : {stars} "
-        difficulty += "star" if stars == 1 else "stars"
-        embed = discord.Embed(
-            title=data['name'],
-            description=difficulty,
-            colour=stars_colour_list[data['stars']]
-        )
-        embed.add_field(
-            name="설명ㅣDescription",
-            value=data['desc'],
-            inline=False
-        )
-        embed.add_field(
-            name="레벨ㅣLevels",
-            value=data['levels'],
-            inline=False
-        )
-        embed.add_field(
-            name="올클리어 보상ㅣAll Clear Reward",
-            value=f"{data['exp']} EXP",
-            inline=False
-        )
-    elif quest['type'] == 2:
-        data = event_quest_data_constructor(quest)
-        stars = data['stars']
-        difficulty = f"Difficulty : {stars} "
-        difficulty += "star" if stars == 1 else "stars"
-        embed = discord.Embed(
-            title=data['name'],
-            description=difficulty,
-            colour=0xffa0ff
-        )
-        embed.add_field(
-            name="이벤트 기간ㅣEvent Period",
-            value=data['period'],
-            inline=False
-        )
-        embed.add_field(
-            name="설명ㅣDescription",
-            value=data['desc'],
-            inline=False
-        )
-        embed.add_field(
-            name="조건ㅣRequirement",
-            value=data['req'],
-            inline=False
-        )
-        embed.add_field(
-            name="레벨ㅣLevel",
-            value=data['level'],
-            inline=False
-        )
-        embed.add_field(
-            name="올클리어 보상ㅣAll Clear Reward",
-            value=f"{data['exp']} EXP",
-            inline=False
-        )
-        embed.add_field(
-            name="클리어자 목록ㅣClear List",
-            value=data['level_clears'],
-            inline=False
-        )
-        embed.add_field(
-            name="올클리어자 목록ㅣAll Clear List",
-            value=data['quest_clears'],
-            inline=False
-        )
-    else: raise InvalidQuestType()
+def quest_embed(quest): # database 사용
+    if type(quest) is dict:
+        if quest['type'] == 0:
+            data = quest_data_constructor(quest)
+            stars = data['stars']
+            difficulty = f"Difficulty : {stars} "
+            difficulty += "star" if stars == 1 else "stars"
+            embed = discord.Embed(
+                title=data['name'],
+                description=difficulty,
+                colour=stars_colour_list[stars]
+            )
+            embed.add_field(
+                name="조건ㅣRequirement",
+                value=data['req'],
+                inline=False
+            )
+            embed.add_field(
+                name="레벨ㅣLevels",
+                value=data['levels'],
+                inline=False
+            )
+            embed.add_field(
+                name="올클리어 보상ㅣAll Clear Reward",
+                value=f"{data['exp']} EXP",
+                inline=False
+            )
+            embed.add_field(
+                name="최근 클리어자 목록ㅣRecent Clear List",
+                value=data['latest_clear'],
+                inline=False
+            )
+        elif quest['type'] == 1:
+            data = collab_quest_data_constructor(quest)
+            stars = data['stars']
+            difficulty = f"Difficulty : {stars} "
+            difficulty += "star" if stars == 1 else "stars"
+            embed = discord.Embed(
+                title=data['name'],
+                description=difficulty,
+                colour=stars_colour_list[data['stars']]
+            )
+            embed.add_field(
+                name="설명ㅣDescription",
+                value=data['desc'],
+                inline=False
+            )
+            embed.add_field(
+                name="레벨ㅣLevels",
+                value=data['levels'],
+                inline=False
+            )
+            embed.add_field(
+                name="올클리어 보상ㅣAll Clear Reward",
+                value=f"{data['exp']} EXP",
+                inline=False
+            )
+        elif quest['type'] == 2:
+            data = event_quest_data_constructor(quest)
+            stars = data['stars']
+            difficulty = f"Difficulty : {stars} "
+            difficulty += "star" if stars == 1 else "stars"
+            embed = discord.Embed(
+                title=data['name'],
+                description=difficulty,
+                colour=0xffa0ff
+            )
+            embed.add_field(
+                name="이벤트 기간ㅣEvent Period",
+                value=data['period'],
+                inline=False
+            )
+            embed.add_field(
+                name="설명ㅣDescription",
+                value=data['desc'],
+                inline=False
+            )
+            embed.add_field(
+                name="조건ㅣRequirement",
+                value=data['req'],
+                inline=False
+            )
+            embed.add_field(
+                name="레벨ㅣLevel",
+                value=data['level'],
+                inline=False
+            )
+            embed.add_field(
+                name="올클리어 보상ㅣAll Clear Reward",
+                value=f"{data['exp']} EXP",
+                inline=False
+            )
+            embed.add_field(
+                name="클리어자 목록ㅣClear List",
+                value=data['level_clears'],
+                inline=False
+            )
+            embed.add_field(
+                name="올클리어자 목록ㅣAll Clear List",
+                value=data['quest_clears'],
+                inline=False
+            )
+        else: raise InvalidQuestType()
+    elif type(quest) is int:
+        if 1 <= quest <= 5:
+            data = db.find_quests_by_stars(quest)
+            event_info = db.get_event_info()
+
+            difficulty = f"Difficulty : {quest} "
+            difficulty += "star" if quest == 1 else "stars"
+            embed = discord.Embed(
+                title="퀘스트 목록ㅣQuest List",
+                description=difficulty,
+                color=stars_colour_list[quest]
+            )
+            name_s = "\n"
+            exp_s = "\n"
+            for quest_dict in data:
+                if (quest_dict['type'] == 2) and event_info is None: continue
+                name_s += quest_dict['name'] + "\n\n"
+                levels_list = db.find_levels(quest_dict['id'])
+                exp_list = [level['exp'] for level in levels_list]
+                exp_min, exp_max = min(exp_list), max(exp_list)
+                exp_s += f"{exp_min} - {exp_max}   ({quest_dict['exp']})\n\n"
+
+            embed.add_field(
+                name="퀘스트ㅣQuest",
+                value=name_s,
+                inline=True
+            )
+            embed.add_field(
+                name="EXP",
+                value=exp_s,
+                inline=True
+            )
+        else: raise db.NoSuchDifficulty()
+
+    else: raise TypeError
     return embed
 
 
