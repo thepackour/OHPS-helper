@@ -10,7 +10,7 @@
       "song": "Etude WoO (Etude without opus)"
     }
   },
-  "open": true,
+  "open": false,
   "quest": {
     "desc_eng": "Make a team with two players and complete a nice piano duet! Rewards will be given differently depending on accuracy and submit order.",
     "desc_kor": "두 명이 한 팀이 되어 멋있는 피아노 2중주를 완주해주세요! 보상은 정확도 및 제출 순서에 따라 다르게 지급됩니다.",

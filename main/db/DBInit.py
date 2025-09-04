@@ -23,9 +23,9 @@ CREATE TABLE IF NOT EXISTS quests (
 CREATE TABLE IF NOT EXISTS levels (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     quest_id BIGINT NOT NULL,
-    artist VARCHAR(255) NOT NULL,
+    artist VARCHAR(255),
     song VARCHAR(255) NOT NULL,
-    creator VARCHAR(255) NOT NULL,
+    creator VARCHAR(255),
     exp SMALLINT NOT NULL
 );''',
 '''
