@@ -15,18 +15,18 @@ def _is_details_dict_valid(details_dict: dict):
     return True
 
 def _find_user(cursor, user_id: str):
-    cursor.execute('''SELECT * FROM users WHERE id = ?''', user_id)
-    if cursor.fetchone()[0] is None: raise NoSuchUser()
+    cursor.execute('''SELECT * FROM users WHERE id = ?''', (user_id,))
     return cursor.fetchone()
 
 def _find_quest(cursor, quest_id: int):
-    cursor.execute('''SELECT * FROM quests WHERE id = ?''', quest_id)
-    if cursor.fetchone()[0] is None: raise NoSuchQuest()
-    return cursor.fetchone()
+    cursor.execute('''SELECT * FROM quests WHERE id = ?''', (quest_id,))
+    res = cursor.fetchone()[0]
+    if res is None: return None
+    return res
 
 def _find_level_clears(cursor, quest_id: int):
     if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM level_clears WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM level_clears WHERE quest_id = ?''', (quest_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: (x['id'], x['level_id']))
@@ -34,19 +34,19 @@ def _find_level_clears(cursor, quest_id: int):
 
 def _find_quest_clears(cursor, quest_id: int):
     if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM quest_clears WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM quest_clears WHERE quest_id = ?''', (quest_id,))
     res = cursor.fetchall()
     dict_list = [dict(row) for row in res]
     dict_list.sort(key=lambda x: x['id'])
     return dict_list
 
 def _find_levels(cursor, quest_id: int):
-    if _find_quest(cursor, quest_id) is None: raise NoSuchQuest()
-    cursor.execute('''SELECT * FROM levels WHERE quest_id = ?''', quest_id)
+    cursor.execute('''SELECT * FROM levels WHERE quest_id = ? ORDER BY id''', (quest_id,))
     res = cursor.fetchall()
-    dict_list = [dict(row) for row in res]
-    dict_list.sort(key=lambda x: x['id'])
-    return dict_list #
+    if res:
+        dict_list = [dict(row) for row in res]
+        return dict_list
+    else: return None
 
 
 def get_event_quest():
@@ -124,11 +124,22 @@ def delete_user(cursor, user_id: str):
 
 
 @with_connection
-def get_all_users(cursor): # 레벨 순으로 정렬
-    cursor.execute('''SELECT * FROM users ORDER BY level DESC''')
+def get_all_users(cursor): # EXP 순으로 정렬
+    cursor.execute('''SELECT * FROM users ORDER BY exp DESC''')
     users_row_list = cursor.fetchall()
     users_dict_list = [dict(row) for row in users_row_list]
     return users_dict_list
+
+
+@with_connection
+def update_username(cursor, user_id: str, new_username: str):
+    if _find_user(cursor, user_id) is None: raise NoSuchUser()
+    else:
+        cursor.execute('''
+        UPDATE users 
+        SET username = :new_username
+        WHERE id = :user_id
+        ''', (new_username, user_id))
 
 
 @with_connection
@@ -141,7 +152,7 @@ def get_quest_name_list(cursor):
 
 
 @with_connection
-def find_quest_by_stars(cursor, stars: int):
+def find_quests_by_stars(cursor, stars: int):
     if stars < 1 or stars > 5: raise InvalidStars()
     else:
         cursor.execute('''SELECT * FROM quests WHERE stars = ?''', (stars,))
@@ -177,9 +188,11 @@ def find_level_clears(cursor, user_id: str):
     if _find_user(cursor, user_id) is None: raise NoSuchUser()
     cursor.execute('''SELECT * FROM level_clears WHERE user_id = ?''', (user_id,))
     res = cursor.fetchall()
-    dict_list = [dict(row) for row in res]
-    dict_list.sort(key=lambda x: x['id'])
-    return dict_list
+    if res:
+        dict_list = [dict(row) for row in res]
+        dict_list.sort(key=lambda x: x['id'])
+        return dict_list
+    return []
 
 
 @with_connection
@@ -208,6 +221,14 @@ def find_levels(cursor, query):
         return dict_list
 
     else: raise TypeError()
+
+
+@with_connection
+def find_level(cursor, level_id: int):
+    cursor.execute('''SELECT * FROM levels WHERE id = ?''', (level_id,))
+    res = cursor.fetchone()
+    if res is None: raise NoSuchLevel()
+    else: return dict(res)
 
 
 @with_connection

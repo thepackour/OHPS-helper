@@ -5,7 +5,7 @@
       "creator": "xitop",
       "exp": "999",
       "level_id": [
-        33
+        73
       ],
       "song": "Etude WoO (Etude without opus)"
     }
@@ -17,7 +17,7 @@
     "exp": "???",
     "name": "DU;ETude",
     "period": "2024.01.24 ~ 2024.04.31",
-    "quest_id": 20,
+    "quest_id": 19,
     "req": 0,
     "req_eng": "One-handed clear with teammate",
     "req_kor": "팀원과 함께 한손 클리어",

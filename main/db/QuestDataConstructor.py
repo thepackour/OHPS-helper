@@ -5,7 +5,7 @@ from main.db.ConnFactory import with_connection
 from main.db import NoSuchUser, NoSuchLevel
 from main.msgformat.variables import requirement_list
 import main.debug as debug
-from main.msgformat.OfficialLevels import *
+import main.msgformat as msgformat
 
 
 number_of_collab_parts = {
@@ -49,10 +49,7 @@ def quest_data_constructor(cursor, quest: dict):
     latest_s = ""
     for i, level in enumerate(level_list, start=1):
         level_s += f"**Level #{i}** \n"
-        if is_official(level):
-            level_s += official_str(level)
-        else:
-            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+        level_s += msgformat.level_str(level)
 
         cursor.execute('''
         SELECT * FROM level_clears 
@@ -164,7 +161,6 @@ def collab_quest_data_constructor(cursor, quest: dict):
     }
 
 
-### EVENT QUEST SETTING ###
 @with_connection
 def event_quest_data_constructor(cursor, quest: dict):
     quest_info = quest['json']['quest']
@@ -184,10 +180,7 @@ def event_quest_data_constructor(cursor, quest: dict):
     for i, level in level_list.items():
         level_id_list.append(level['level_id'])
         level_s += f"**Level #{i}** \n"
-        if is_official(level):
-            level_s += official_str(level)
-        else:
-            level_s += f"{level['artist']} - {level['song']} (by {level['creator']}) ({level['exp']} EXP) \n"
+        level_s += msgformat.level_str(level)
 
         cursor.execute('''
             SELECT * FROM level_clears 

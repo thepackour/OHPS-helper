@@ -1,23 +1,23 @@
 [
   {
     "quest_id": 1,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "5-X The Midnight Train",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 10
   },
   {
     "quest_id": 1,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "8-X Jungle City",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 15
   },
   {
     "quest_id": 1,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "9-X Classic Pursuit",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 15
   },
   {
@@ -29,23 +29,23 @@
   },
   {
     "quest_id": 2,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "10-X Butterfly Planet",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 15
   },
   {
     "quest_id": 2,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "11-X Heracles",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 15
   },
   {
     "quest_id": 2,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "XH-X Final Hope",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 15
   },
   {
@@ -57,16 +57,16 @@
   },
   {
     "quest_id": 3,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "12-X Artificial Chariot",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 20
   },
   {
     "quest_id": 3,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "XR-X Rose Garden",
-    "creator": "OFFICIAL",
+    "creator": "",
     "exp": 20
   },
   {
@@ -74,7 +74,7 @@
     "artist": "Monokuro",
     "song": "Black Rose",
     "creator": "CyanAqua",
-    "exp": 40
+    "exp": 35
   },
   {
     "quest_id": 3,
@@ -85,11 +85,12 @@
   },
   {
     "quest_id": 4,
-    "artist": "しゃろう",
-    "song": "3:03 PM",
-    "creator": "Team P.A.L.",
-    "exp": 25
+    "artist": "teinu",
+    "song": "Chocolate Periwinkle",
+    "creator": "hotduck & 더파",
+    "exp": 30
   },
+
   {
     "quest_id": 4,
     "artist": "Qyubey",
@@ -113,73 +114,73 @@
   },
   {
     "quest_id": 5,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "XO-X One Forgotten Night",
-    "creator": "OFFICIAL",
-    "exp": 45
+    "creator": "",
+    "exp": 80
   },
   {
     "quest_id": 5,
-    "artist": "OFFICIAL",
+    "artist": "",
     "song": "XT-X Options",
-    "creator": "OFFICIAL",
-    "exp": 50
+    "creator": "",
+    "exp": 90
   },
   {
     "quest_id": 5,
     "artist": "DOT96",
     "song": "MAKE IT FUNKY NOW",
     "creator": "PizzaLovers007",
-    "exp": 60
+    "exp": 90
   },
   {
     "quest_id": 5,
     "artist": "Halv",
     "song": "Wings",
     "creator": "HanB",
-    "exp": 90
+    "exp": 105
   },
   {
     "quest_id": 6,
-    "artist": "Camellia",
-    "song": "Heart of Android : Even If It's Only By Mechanism",
-    "creator": "Team Vega",
-    "exp": 50
+    "artist": "linear ring",
+    "song": "enchanted love",
+    "creator": "Pharah",
+    "exp": 45
   },
   {
     "quest_id": 6,
     "artist": "iTIC",
     "song": "Triple Sec",
     "creator": "Pharah",
-    "exp": 65
+    "exp": 80
   },
   {
     "quest_id": 6,
     "artist": "q/stol",
     "song": "LOVE THIS MOMENT",
     "creator": "PowerFactory",
-    "exp": 60
+    "exp": 70
   },
   {
     "quest_id": 6,
     "artist": "Orange Wolke",
     "song": "Stephen's Tiny Cafe",
     "creator": "-K",
-    "exp": 70
+    "exp": 80
   },
   {
     "quest_id": 7,
-    "artist": "Linear Ring Mix",
+    "artist": "",
     "song": "Linear Ring Mix",
     "creator": "Pharah and more",
     "exp": 100
   },
   {
     "quest_id": 7,
-    "artist": "Frums",
-    "song": "Pictured as Perfect and Plus",
-    "creator": "Team Vega",
-    "exp": 90
+    "artist": "",
+    "song": "PLUM MEGAMIX 2 (Low Effect)",
+    "creator": "토끼로봇",
+    "exp": 100
   },
   {
     "quest_id": 7,
@@ -200,27 +201,307 @@
     "artist": "Lime",
     "song": "Chronomia (Nerfed)",
     "creator": "Editor AlriC",
-    "exp": 50
+    "exp": 30
   },
   {
     "quest_id": 8,
     "artist": "Plant Guy",
     "song": "Fog sees it",
     "creator": "Plant Guy",
-    "exp": 60
+    "exp": 35
   },
   {
     "quest_id": 8,
     "artist": "Halv",
     "song": "Barrage",
     "creator": "NumbEr07",
-    "exp": 50
+    "exp": 20
   },
   {
     "quest_id": 8,
     "artist": "AZALI",
     "song": "CHAOS CONTROL",
     "creator": "Keqi",
-    "exp": 70
+    "exp": 55
+  },
+  {
+    "quest_id": 9,
+    "artist": "Plum",
+    "song": "R 8bit",
+    "creator": "Nephrolepis",
+    "exp": 180
+  },
+  {
+    "quest_id": 9,
+    "artist": "Plum",
+    "song": "R (New Version)",
+    "creator": "NumbEr07 & Bingsu",
+    "exp": 160
+  },
+  {
+    "quest_id": 9,
+    "artist": "P4Koo",
+    "song": "8th Planet",
+    "creator": "BWen",
+    "exp": 130
+  },
+  {
+    "quest_id": 9,
+    "artist": "Plum",
+    "song": "My Piano Is Escaping",
+    "creator": "사로아SarouA",
+    "exp": 180
+  },
+  {
+    "quest_id": 10,
+    "artist": "Polymath9",
+    "song": "Dirge in Magenta",
+    "creator": "NumbEr07",
+    "exp": 110
+  },
+  {
+    "quest_id": 10,
+    "artist": "Plum",
+    "song": "Mad Piano Party",
+    "creator": "Strode",
+    "exp": 125
+  },
+  {
+    "quest_id": 10,
+    "artist": "Plum",
+    "song": "Mad Piano Party",
+    "creator": "Nichipe",
+    "exp": 130
+  },
+  {
+    "quest_id": 10,
+    "artist": "Plum",
+    "song": "Wake Up, Piano!",
+    "creator": "Strode",
+    "exp": 120
+  },
+  {
+    "quest_id": 11,
+    "artist": "E0ri4",
+    "song": "Rainy Gate (Simple)",
+    "creator": "NumbEr07",
+    "exp": 130
+  },
+  {
+    "quest_id": 11,
+    "artist": "LeaF",
+    "song": "MARENOL",
+    "creator": "Ssimille",
+    "exp": 110
+  },
+  {
+    "quest_id": 11,
+    "artist": "Plum",
+    "song": "Skyscape",
+    "creator": "Strode",
+    "exp": 100
+  },
+  {
+    "quest_id": 11,
+    "artist": "Halv",
+    "song": "Kaleidosc0pe",
+    "creator": "NumbEr07",
+    "exp": 120
+  },
+  {
+    "quest_id": 12,
+    "artist": "",
+    "song": "ML-X la nuit de vif",
+    "creator": "",
+    "exp": 130
+  },
+  {
+    "quest_id": 12,
+    "artist": "",
+    "song": "XS-X Party of Spirits",
+    "creator": "",
+    "exp": 140
+  },
+  {
+    "quest_id": 12,
+    "artist": "iTIC",
+    "song": "We Wish You a Wonderful Christmas",
+    "creator": "토끼로봇 & 초보잼",
+    "exp": 160
+  },
+  {
+    "quest_id": 12,
+    "artist": "ああああ",
+    "song": "w=addict",
+    "creator": "PowerFactory",
+    "exp": 150
+  },
+  {
+    "quest_id": 13,
+    "artist": "LeaF",
+    "song": "Evanescent",
+    "creator": "Ssimille",
+    "exp": 230
+  },
+  {
+    "quest_id": 13,
+    "artist": "Roy Mikelate",
+    "song": "Your Mind (Nerfed)",
+    "creator": "BWen",
+    "exp": 250
+  },
+  {
+    "quest_id": 13,
+    "artist": "DJ Nate",
+    "song": "Bitch Punch",
+    "creator": "ANDYGAMES",
+    "exp": 250
+  },
+  {
+    "quest_id": 13,
+    "artist": "Cosmograph",
+    "song": "Time Off",
+    "creator": "NumbEr07",
+    "exp": 280
+  },
+  {
+    "quest_id": 14,
+    "artist": "Camellia",
+    "song": "PURE SILVER",
+    "creator": "Nephrolepis",
+    "exp": 250
+  },
+  {
+    "quest_id": 14,
+    "artist": "False Noise",
+    "song": "Shiver",
+    "creator": "PLORALD",
+    "exp": 250
+  },
+  {
+    "quest_id": 14,
+    "artist": "II-L",
+    "song": "THE EARTH",
+    "creator": "Felix",
+    "exp": 200
+  },
+  {
+    "quest_id": 14,
+    "artist": "Lokan",
+    "song": "Janus",
+    "creator": "Star4th",
+    "exp": 220
+  },
+  {
+    "quest_id": 15,
+    "artist": "Ludicin",
+    "song": "Clinozoisite",
+    "creator": "Team UtoP",
+    "exp": 210
+  },
+  {
+    "quest_id": 15,
+    "artist": "Camellia",
+    "song": "NIGHTMARE † CITY",
+    "creator": "한가지 & 홍시",
+    "exp": 230
+  },
+  {
+    "quest_id": 15,
+    "artist": "Camellia",
+    "song": "Together forever, my lovely lovely video game cartridges",
+    "creator": "Nephrolepis",
+    "exp": 190
+  },
+  {
+    "quest_id": 15,
+    "artist": "Cansol",
+    "song": "Happily Ever After -True Ending-",
+    "creator": "Nephrolepis",
+    "exp": 230
+  },
+  {
+    "quest_id": 16,
+    "artist": "linear ring",
+    "song": "ゆらゆらLovelight (Short)",
+    "creator": "Editor AlriC",
+    "exp": 280
+  },
+  {
+    "quest_id": 16,
+    "artist": "t+pazolite",
+    "song": "Sugary Sweets",
+    "creator": "지네고 & SarouA",
+    "exp": 260
+  },
+  {
+    "quest_id": 16,
+    "artist": "Synthion",
+    "song": "Light Years Away",
+    "creator": "pixxy & Logal0",
+    "exp": 240
+  },
+  {
+    "quest_id": 16,
+    "artist": "Camellia",
+    "song": "S.A.T.E.L.L.I.T.E.",
+    "creator": "폐브",
+    "exp": 240
+  },
+  {
+    "quest_id": 17,
+    "artist": "ああああ",
+    "song": "∀",
+    "creator": "Nephrolepis & Pharah",
+    "exp": 270
+  },
+  {
+    "quest_id": 17,
+    "artist": "ARForest",
+    "song": "The Last Page",
+    "creator": "Fielis",
+    "exp": 270
+  },
+  {
+    "quest_id": 17,
+    "artist": "kanemiko",
+    "song": "comet casting capsule",
+    "creator": "Nephrolepis",
+    "exp": 270
+  },
+  {
+    "quest_id": 17,
+    "artist": "Cansol",
+    "song": "Once Again",
+    "creator": "NumbEr07",
+    "exp": 280
+  },
+  {
+    "quest_id": 18,
+    "artist": "BilliumMoto",
+    "song": "A Tulip For Genji",
+    "creator": "Nephrolepis",
+    "exp": 480
+  },
+  {
+    "quest_id": 18,
+    "artist": "Frums",
+    "song": "24eeev0-$",
+    "creator": "Editor AlriC & PowerFactory",
+    "exp": 500
+  },
+  {
+    "quest_id": 18,
+    "artist": "seatrus",
+    "song": "Cheating House",
+    "creator": "연석이2",
+    "exp": 450
+  },
+  {
+    "quest_id": 18,
+    "artist": "Kurokotei",
+    "song": "Nonbinarity",
+    "creator": "Nephrolepis",
+    "exp": 520
   }
 ]

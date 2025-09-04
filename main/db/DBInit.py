@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS users (
     last_level_clear INT,
     last_quest_clear INT,
     username VARCHAR(255) NOT NULL,
-    level INT DEFAULT 1,
     exp BIGINT DEFAULT 0,
     tier TINYINT DEFAULT 4,
     main_hand VARCHAR(255),

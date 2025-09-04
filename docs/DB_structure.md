@@ -7,8 +7,6 @@
 ### last_quest_clear : INT
 - nullable
 ### username : VARCHAR(255)
-### level : INT
-- 기본값 1
 ### exp : BIGINT
 - 기본값 0
 ### tier : TINYINT
@@ -88,4 +86,14 @@
 - 1-A-5 : 1번째 맵 A형 5번째 파트
 - 4-B-9 : 4번째 맵 B형 9번째 파트
 ### video : VARCHAR(255)
+### created_at : TIMESTAMP
+
+
+# challenge_submission
+### id : SMALLINT
+- PK
+### user_id : VARCHAR(255)
+### level : VARCHAR(255)
+- 1-1 : 알파 티어 1번째 레벨
+- 3-4 : 감마 티어 4번째 레벨
 ### created_at : TIMESTAMP
