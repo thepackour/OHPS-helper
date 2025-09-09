@@ -28,15 +28,23 @@
 **'exp_after':** u\['exp'\] + q\['exp'\] *(/clears/add_quest_clear)*
 #### }
 ###
+### 챌린지 클리어 알림
+#### {
+**'type':** 'challenge clear'
+
+**'submitted_at'**: created_at *(/challenges/add_challenge_clear)*
+
+**'user_id'**: u\['user_id'\] *(/challenges/add_challenge_clear)*
+
+**'level':** level *(/challenges/add_challenge_clear)*
+#### }
+###
 ### 티어 승급 알림
 #### {
 **'type':** 'tier up'
 
 **'submitted_at'**: created_at *(/challenges/add_challenge_clear)*
 
-**'tier_before':** u\['exp'\] *(/challenges/add_challenge_clear)*
+**'user_id'**: u\['user_id'\] *(/challenges/add_challenge_clear)*
 
-**'tier_after':** u\['exp'\] + q\['exp'\] *(/challenges/add_challenge_clear)*
-
-**'color':** color *(/challenges/add_challenge_clear)*
-#### }
+**'tier':** level.split("-")\[0\] *(/challenges/add_challenge_clear)*

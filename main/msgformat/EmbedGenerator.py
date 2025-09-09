@@ -429,43 +429,114 @@ async def leaderboard_embed():
 
 
 async def notice_embed(entry: dict):
-    if entry['type'] == 'level clear':
-        embed = discord.Embed(
-            title='퀘스트 완료ㅣQuest Complete',
-            description=f'Submitted on {entry['submitted_at']}',
-            color=entry['color']
-        )
-        embed.add_field(
-            name="플레이어 이름ㅣPlayer name",
-            value=db.find_user(entry['user_id'])['name'],
-            inline=True
-        )
-        exp_s = f"{entry['exp_before']} EXP → {entry['exp_after']} EXP (+{entry['exp_after'] - entry['exp_before']})"
-        if EXPtoLevel(entry['exp_after']) > EXPtoLevel(entry['exp_before']):
-            exp_s += f"\n{EXPtoLevel(entry['exp_before'])} Level → {EXPtoLevel(entry['exp_after'])} Level"
-        embed.add_field(
-            name="경험치 & 레벨ㅣEXP & Level",
-            value=exp_s,
-            inline=True
-        )
-        embed.add_field(
-            name="퀘스트 이름ㅣQuest name",
-            value=db.find_quest_by_id(entry['quest_id'])['name'],
-            inline=True
-        )
-        played_level = db.find_level(entry['quest_id'])
-        embed.add_field(
-            name="플레이한 레벨ㅣPlayed level",
-            value=msgformat.level_str(played_level),
-            inline=True
-        )
-2
-    elif entry['type'] == 'quest clear':
+    try:
+        if entry['type'] == 'level clear':
+            q = db.find_quest_by_id(entry['quest_id'])
+            embed = discord.Embed(
+                title='레벨 클리어ㅣLevel Clear',
+                description=f'Submitted on {entry['submitted_at']}',
+                color=stars_colour_list[q['stars']]
+            )
+            embed.add_field(
+                name="플레이어 이름ㅣPlayer name",
+                value=db.find_user(entry['user_id'])['name'],
+                inline=True
+            )
+            exp_s = f"{entry['exp_before']} EXP → {entry['exp_after']} EXP (+{entry['exp_after'] - entry['exp_before']})"
+            if EXPtoLevel(entry['exp_after']) > EXPtoLevel(entry['exp_before']):
+                exp_s += f"\n{EXPtoLevel(entry['exp_before'])} Level → {EXPtoLevel(entry['exp_after'])} Level"
+            embed.add_field(
+                name="경험치 & 레벨ㅣEXP & Level",
+                value=exp_s,
+                inline=True
+            )
+            embed.add_field(
+                name="퀘스트 이름ㅣQuest name",
+                value=q['name'],
+                inline=True
+            )
+            played_level = db.find_level(entry['quest_id'])
+            embed.add_field(
+                name="플레이한 레벨ㅣPlayed level",
+                value=msgformat.level_str(played_level),
+                inline=True
+            )
 
-    elif entry['type'] == 'challenge clear':
+        elif entry['type'] == 'quest clear':
+            q = db.find_quest_by_id(entry['quest_id'])
+            embed = discord.Embed(
+                title='퀘스트 클리어ㅣQuest Clear',
+                description=f'Submitted on {entry['submitted_at']}',
+                color=stars_colour_list[q['stars']]
+            )
+            embed.add_field(
+                name="플레이어 이름ㅣPlayer name",
+                value=db.find_user(entry['user_id'])['name'],
+                inline=True
+            )
+            exp_s = f"{entry['exp_before']} EXP → {entry['exp_after']} EXP (+{entry['exp_after'] - entry['exp_before']})"
+            if EXPtoLevel(entry['exp_after']) > EXPtoLevel(entry['exp_before']):
+                exp_s += f"\n{EXPtoLevel(entry['exp_before'])} Level → {EXPtoLevel(entry['exp_after'])} Level"
+            embed.add_field(
+                name="경험치 & 레벨ㅣEXP & Level",
+                value=exp_s,
+                inline=True
+            )
+            embed.add_field(
+                name="퀘스트 이름ㅣQuest name",
+                value=q['name'],
+                inline=True
+            )
 
-    elif entry['type'] == 'tear up':
+        elif entry['type'] == 'challenge clear':
+            t = tier_list[int(entry['level'].split('-')[0])]
+            try: l = db.get_challenge_levels()
+            except Exception as e: debug.log("Failed to get challenge_levels.json", e=e)
+            else:
+                embed = discord.Embed(
+                    title='챌린지 클리어ㅣChallenge Clear',
+                    description=f'Submitted on {entry['submitted_at']}',
+                    color=t['color']
+                )
+                embed.add_field(
+                    name="플레이어 이름ㅣPlayer name",
+                    value=db.find_user({'id': entry['user_id']})['username'],
+                    inline=True
+                )
+                embed.add_field(
+                    name="챌린지 티어ㅣChallenge Tier",
+                    value=t['name'],
+                    inline=True
+                )
+                embed.add_field(
+                    name="플레이한 레벨ㅣPlayed level",
+                    value=msgformat.level_str(l[entry['level']]),
+                    inline=True
+                )
 
-    else: embed = None
+        elif entry['type'] == 'tear up':
+            t_after = tier_list[int(entry['level'].split('-')[0])]
+            t_before = tier_list[int(entry['level'].split('-')[0]) + 1]
+            embed = discord.Embed(
+                title='티어 승급ㅣTier Elevation',
+                description=f'Submitted on {entry['submitted_at']}',
+                color=t_after['color']
+            )
+            embed.add_field(
+                name="플레이어 이름ㅣPlayer name",
+                value=db.find_user(entry['user_id'])['name'],
+                inline=True
+            )
+            embed.add_field(
+                name="티어ㅣTier",
+                value=f"{t_before} → **{t_after}**",
+                inline=True
+            )
+
+        else: embed = None
+    except Exception as e:
+        debug.log("Failed to generate notice_embed", embed, e)
+    else:
+        debug.log("Successfully generated notice_embed", embed)
 
     return embed

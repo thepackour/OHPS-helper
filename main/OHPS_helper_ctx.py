@@ -17,7 +17,7 @@ import main.debug as debug
 
 load_dotenv()
 token = os.getenv("OHPS_TOKEN")
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # 현재 파일 위치
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # json_path = os.path.join(BASE_DIR, 'credentials', 'service_account.json')
 # gc = gspread.service_account(filename=json_path)
 # DB = gc.open("OHPS Server DB")
@@ -34,7 +34,16 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="o!",intents=intents)
 bot.help_command = None
 
-tier_list = [0, 1190696361268613200, 1190697066662465616, 1190699025968668672, 1190699240683487312]
+# channel = bot.get_channel(int(os.getenv("CHANNEL")))
+channel = None
+server = None
+
+tier_id_list = (0,
+                int(os.getenv("ALPHA_TIER")),
+                int(os.getenv("BETA_TIER")),
+                int(os.getenv("GAMMA_TIER")),
+                int(os.getenv("DELTA_TIER"))
+                )
 
 
 class WrongInput(Exception):
@@ -52,6 +61,10 @@ async def on_ready():
         print(f"Synced {len(synced)} command(s)\n")
         await bot.change_presence(activity=discord.CustomActivity(type=discord.ActivityType.custom,
                                                                   name='under development'))
+        global channel, server
+        channel = bot.get_channel(int(os.getenv("TEST_CHANNEL")))
+        server = bot.get_guild(int(os.getenv("OHPS_SERVER_ID")))
+        complete_task_queue.start()
         # f'Running {len(synced)} commands with one hand'
     except Exception as e:
         print(e)
@@ -281,15 +294,33 @@ async def form(interaction: discord.Interaction):
                                             '- [여기를 클릭하세요!ㅣClick Here!](<https://forms.gle/B1twVnyvKMU24z5c9>)\n')
 
 
-# @tasks.loop(minutes=1)
+@tasks.loop(seconds=10)
 async def complete_task_queue():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    json_path = os.path.join(BASE_DIR, 'task_queue.json')
-    with open(json_path, 'r', encoding='utf-8') as f:
+    task_queue_path = os.path.join(BASE_DIR, 'db', 'json', 'task_queue.json')
+    with open(task_queue_path, 'r', encoding='utf-8') as f:
         task_queue = json.load(f)
+    failed_list = []
     while task_queue:
         task = task_queue.pop(0)
+        try:
+            user_id = task['user_id']
+            embed = await msgformat.notice_embed(task)
+            m = server.get_member(user_id)
+            if embed is not None:
+                await channel.send(m)
+                await channel.send(embed=embed)
+                debug.log("Successfully complete a task", task)
+            else:
+                debug.log("Failed to complete a task (embed is None)", task)
+                failed_list.append(task)
+        except Exception as e:
+            debug.log("Failed to complete a task", task, e)
+            failed_list.append(task)
+
+    task_queue.extend(failed_list)
+    with open(task_queue_path, 'w', encoding='utf-8') as f:
+        json.dump(task_queue, f, ensure_ascii=False, indent=2)
 
 
-
-if __name__ == "__main__": bot.run(token)
+if __name__ == "__main__":
+    bot.run(token)

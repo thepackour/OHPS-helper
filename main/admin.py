@@ -1,4 +1,6 @@
 import datetime
+import json
+import os
 import sqlite3
 
 import numpy
@@ -10,6 +12,8 @@ class QuitWhilePrompting(Exception):
 class NoSuchData(Exception):
     pass
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+task_queue_path = os.path.join(BASE_DIR, 'db', 'json', 'task_queue.json')
 
 _con = None
 
@@ -49,7 +53,6 @@ def users():
             print("---------- /users/add_user ---------- \n")
             user_id = input("id: ")
             username = input("username: ")
-            level = input("level: ")
             exp = input("exp: ")
             tier = input("tier (1~4): ")
             last_level_clear = input("last_level_clear: ")
@@ -71,7 +74,6 @@ def users():
                         entry = {
                             'id': user_id,
                             'username': username,
-                            'level': 1 if not level else int(level),
                             'exp': 0 if not exp else int(exp),
                             'tier': 4 if not tier else int(tier),
                             'last_level_clear': None if not last_level_clear else int(last_level_clear),
@@ -81,14 +83,16 @@ def users():
                             'multi_input_direction': None if not multi_input_direction else multi_input_direction,
                             'details': None if not details else details,
                         }
+                    except TypeError: print("Invalid input (especially int)")
+                    try:
                         cur.execute('''
                         INSERT INTO users 
-                        (id, username, level, exp, tier, last_level_clear, last_quest_clear, main_hand, number_of_keys, multi_input_direction, details)
-                        VALUES (:id, :username, :level, :exp, :tier, :last_level_clear, :last_quest_clear, :main_hand, :number_of_keys, :multi_input_direction, :details)
+                        (id, username, exp, tier, last_level_clear, last_quest_clear, main_hand, number_of_keys, multi_input_direction, details)
+                        VALUES (:id, :username, :exp, :tier, :last_level_clear, :last_quest_clear, :main_hand, :number_of_keys, :multi_input_direction, :details)
                         ''', entry)
                         con.commit()
                         print("Added new user")
-                    except TypeError: print("Invalid input (especially int)")
+                    except sqlite3.ProgrammingError: print("ProgrammingError while running INSERT")
 
         elif cmd == '2':
             print("---------- /users/update_user ---------- \n")
@@ -209,6 +213,20 @@ def clears():
                         ''', (u['exp'] + l['exp'], user_id))
                         print("Updated user's exp")
 
+                        with open(task_queue_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        data.append({
+                            'type': 'level clear',
+                            'submitted_at': created_at,
+                            'user_id': user_id,
+                            'level_id': level_id,
+                            'exp_before': u['exp'],
+                            'exp_after': u['exp'] + l['exp']
+                        })
+                        with open(task_queue_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                        print("Added task")
+
                         cur.execute('''
                         SELECT quest_id FROM levels WHERE id = ? LIMIT 1 
                         ''', (level_id,))
@@ -246,8 +264,23 @@ def clears():
                             UPDATE users SET exp = ? WHERE id = ?
                             ''', (u['exp'] + l['exp'] + exp, user_id))
                             print("Updated user's exp")
+
+                            with open(task_queue_path, 'r', encoding='utf-8') as f:
+                                data = json.load(f)
+                            data.append({
+                                'type': 'quest clear',
+                                'submitted_at': created_at,
+                                'user_id': user_id,
+                                'quest_id': quest_id,
+                                'exp_before': u['exp'] + l['exp'],
+                                'exp_after': u['exp'] + l['exp'] + exp
+                            })
+                            with open(task_queue_path, 'w', encoding='utf-8') as f:
+                                json.dump(data, f, ensure_ascii=False, indent=2)
+                            print("Added task")
                         con.commit()
                         print("Committed")
+
                     elif l: print("No such user")
                     else: print("No such level")
                 except ValueError: print("Invalid date format")
@@ -281,6 +314,20 @@ def clears():
                             ''', (u['exp'] + q['exp'], user_id))
                         con.commit()
                         print("Updated user's exp (committed)")
+
+                        with open(task_queue_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        data.append({
+                            'type': 'quest clear',
+                            'submitted_at': created_at,
+                            'user_id': user_id,
+                            'quest_id': quest_id,
+                            'exp_before': u['exp'],
+                            'exp_after': u['exp'] + q['exp']
+                        })
+                        with open(task_queue_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                        print("Added task")
                     elif q: print("No such user or invalid input")
                     else: print("No such quest or invalid input")
                 except ValueError: print("Invalid date format")
@@ -674,6 +721,144 @@ def collab():
                     else: print("No such progress")
             else: print("Invalid input (only digit)")
 
+def challenges():
+    while True:
+        print("---------- /challenges ---------- \n"
+              "1. add challenge clear \n"
+              "2. delete challenge level clear \n"
+              "0. exit \n")
+
+        cmd = input("> ")
+
+        if cmd == '0':
+            break
+        elif cmd == '1':
+            print("---------- /challenges/add_challenge_clear ---------- \n")
+            user_id = input("user_id: ")
+            level = input("level (ex. alpha tier 2nd level = 1-2): ")
+            created_at = input(f"created_at (ex. {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}): ")
+
+            ch_info_list = level.split("-")
+            if len(ch_info_list) == 2 and ch_info_list[0].isdigit() and ch_info_list[1].isdigit():
+                try:
+                    datetime.datetime.strptime(created_at, "%Y-%m-%d %H:%M:%S")
+                except ValueError: print("Invalid date format")
+                except Exception as e: print(e)
+                else:
+                    entry = {
+                        'user_id': user_id,
+                        'level': level,
+                        'created_at': created_at
+                    }
+                    con = create_connection()
+                    cur = con.cursor()
+                    cur.execute('''
+                    INSERT INTO challenge_submission 
+                    (user_id, level, created_at)
+                    VALUES (:user_id, :level, :created_at)
+                    ''', entry)
+                    print("Added challenge clear")
+
+                    with open(task_queue_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    data.append({
+                        'type': 'challenge clear',
+                        'submitted_at': created_at,
+                        'user_id': user_id,
+                        'level': level
+                    })
+                    with open(task_queue_path, 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=2)
+                    print("Added task")
+
+                    level_list = [f"SELECT '{int(ch_info_list[0])}-{i}' AS id" for i in range(1, 6)]
+                    cte_q = ' UNION ALL '.join(level_list)
+
+                    query = f'''
+                        WITH target_ids(id) AS (
+                            {cte_q}
+                        )
+                        SELECT
+                            t.id,
+                            CASE WHEN lc.level IS NOT NULL THEN 1 ELSE 0 END AS e
+                        FROM target_ids t
+                        LEFT JOIN challenge_submission lc ON t.id = lc.level;
+                    '''
+                    cur.execute(query)
+
+                    lst = cur.fetchall()
+
+                    if all([dict(_)['e'] for _ in lst]):
+                        print("****************************************\n"
+                              "Don't forget to change tier role"
+                              "****************************************\n")
+                        with open(task_queue_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        data.append({
+                            'type': 'tier up',
+                            'submitted_at': created_at,
+                            'user_id': user_id,
+                            'tier': int(ch_info_list[0]),
+                        })
+                        with open(task_queue_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                        print("Added task")
+                    con.commit()
+                    print("Committed")
+
+            else: print("Invalid input (part)")
+
+        elif cmd == '2':
+            print("---------- /challenges/delete_challenge_level_clear ---------- \n")
+            progress_id = input("Type progress_id: ")
+
+            if progress_id.isdigit():
+                con = create_connection()
+                cur = con.cursor()
+                cur.execute('''SELECT EXISTS (SELECT 1 FROM collab_quest_progress WHERE id = ?)''', (int(progress_id),))
+                if cur.fetchone()[0]:
+                    s = "Which column to change \n(" + ", ".join(columns) + ") \n:"
+                    target = input(s)
+                    if target == 'level_clear_id':
+                        change = input("Change into (only digit): ")
+                        if change.isdigit():
+                            cur.execute(f'''
+                                UPDATE collab_quest_progress SET {target} = ? WHERE id = ?
+                                ''', (int(change), int(progress_id)))
+                            con.commit()
+                            print("Updated progress")
+                        else: print("Invalid input (only digit)")
+                    elif target == 'part':
+                        change = input("Change into: ")
+                        part_list = change.split("-")
+                        if len(part_list) == 3 and (part_list[0].isdigit() and part_list[1].isalpha() and part_list[2].isdigit()):
+                            cur.execute(f'''
+                                UPDATE quests SET {target} = ? WHERE id = ?
+                                ''', (change, int(progress_id)))
+                            con.commit()
+                            print("Updated progress")
+                    elif target == 'video':
+                        change = input("Change into: ")
+                        cur.execute(f'''
+                            UPDATE collab_quest_progress SET {target} = ? WHERE id = ?
+                            ''', (change, int(progress_id)))
+                        con.commit()
+                        print("Updated progress")
+                    elif target == 'created_at':
+                        change = input("Change into: ")
+                        try:
+                            datetime.datetime.strptime(change, "%Y-%m-%d %H:%M:%S")
+                            cur.execute(f'''
+                                UPDATE collab_quest_progress SET {target} = ? WHERE id = ?
+                                ''', (change, int(progress_id)))
+                            con.commit()
+                            print("Updated progress")
+                        except ValueError: print("Invalid date format")
+                    else: print("Invalid column name")
+                else: print("Progress does not exist")
+            else: print("Invalid input (only digit)")
+
+
 
 def main():
     while True:
@@ -683,6 +868,7 @@ def main():
               "3. levels \n"
               "4. quests \n"
               "5. collab \n"
+              "6. challenges \n"
               "0. exit \n")
 
         cmd = input("> ")
@@ -693,6 +879,7 @@ def main():
         elif cmd == "3": levels()
         elif cmd == "4": quests()
         elif cmd == "5": collab()
+        elif cmd == "6": challenges()
 
 
 main()

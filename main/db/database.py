@@ -71,6 +71,17 @@ def get_event_info():
         return None
 
 
+def get_challenge_levels():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(BASE_DIR, 'json', 'challenge_levels.json')
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data
+    except FileNotFoundError:
+        return None
+
+
 @with_connection
 def add_user(cursor, register_dict: dict):
     if _find_user(cursor, register_dict['id']) is None:

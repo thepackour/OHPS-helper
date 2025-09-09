@@ -1,92 +1,92 @@
-[
-  {
-    "level": "1-1",
-    "artist": "Frums",
-    "song": "Jam with Pancake",
-    "creator": "Clockwork"
-  },
-  {
-    "level": "1-2",
-    "artist": "BilliumMoto",
-    "song": "Amethyst Aurora",
-    "creator": "Nephrolepis"
-  },
-  {
-    "level": "1-3",
-    "artist": "Camellia",
-    "song": "We Magicians Still Alive in 2021",
-    "creator": "Nephrolepis & Pharah"
-  },
-  {
-    "level": "1-4",
-    "artist": "Roy Mikelate",
-    "song": "Your Mind",
-    "creator": "BWen"
-  },
-  {
-    "level": "1-5",
-    "artist": "Camellia",
-    "song": "Σtealth-Δash",
-    "creator": "연석이2 & PLORALD"
-  },
-  {
-    "level": "2-1",
-    "artist": "Riya",
-    "song": "Impulse",
-    "creator": "Clockwork"
-  },
-  {
-    "level": "2-2",
-    "artist": "linear ring",
-    "song": "deleted",
-    "creator": "Nephrolepis & Chyaryam"
-  },
-  {
-    "level": "2-3",
-    "artist": "Plum",
-    "song": "Mad Metal Party",
-    "creator": "Strode"
-  },
-  {
-    "level": "2-4",
-    "artist": "Camellia",
-    "song": "Nasty * Nasty * Spell",
-    "creator": "Nephrolepis"
-  },
-  {
-    "level": "2-5",
-    "artist": "BEKAIN",
-    "song": "Flow of Emotion",
-    "creator": "NfK"
-  },
-  {
-    "level": "3-1",
-    "artist": "takehirotei",
-    "song": "da licc (more licc extended ver)",
-    "creator": "PowerFactory"
-  },
-  {
-    "level": "3-2",
-    "artist": "meganeko",
-    "song": "Sirius A",
-    "creator": "HanB"
-  },
-  {
-    "level": "3-3",
-    "artist": "siqlo",
-    "song": "One Way Street",
-    "creator": "Pharah"
-  },
-  {
-    "level": "3-4",
-    "artist": "",
-    "song": "MO-X EMOMOMO",
-    "creator": ""
-  },
-  {
-    "level": "3-5",
-    "artist": "",
-    "song": "XI-X It Go",
-    "creator": ""
-  }
-]
+{
+  "1-1":
+{
+  "artist": "Frums",
+  "song": "Jam with Pancake",
+  "creator": "Clockwork"
+},
+  "1-2":
+{
+"artist": "BilliumMoto",
+"song": "Amethyst Aurora",
+"creator": "Nephrolepis"
+},
+  "1-3":
+{
+"artist": "Camellia",
+"song": "We Magicians Still Alive in 2021",
+"creator": "Nephrolepis & Pharah"
+},
+  "1-4":
+{
+"artist": "Roy Mikelate",
+"song": "Your Mind",
+"creator": "BWen"
+},
+  "1-5":
+{
+"artist": "Camellia",
+"song": "Σtealth-Δash",
+"creator": "연석이2 & PLORALD"
+},
+  "2-1":
+{
+"artist": "Riya",
+"song": "Impulse",
+"creator": "Clockwork"
+},
+  "2-2":
+{
+"artist": "linear ring",
+"song": "deleted",
+"creator": "Nephrolepis & Chyaryam"
+},
+  "2-3":
+{
+"artist": "Plum",
+"song": "Mad Metal Party",
+"creator": "Strode"
+},
+  "2-4":
+{
+"artist": "Camellia",
+"song": "Nasty * Nasty * Spell",
+"creator": "Nephrolepis"
+},
+  "2-5":
+{
+"artist": "BEKAIN",
+"song": "Flow of Emotion",
+"creator": "NfK"
+},
+  "3-1":
+{
+"artist": "takehirotei",
+"song": "da licc (more licc extended ver)",
+"creator": "PowerFactory"
+},
+  "3-2":
+{
+"artist": "meganeko",
+"song": "Sirius A",
+"creator": "HanB"
+},
+  "3-3":
+{
+"artist": "siqlo",
+"song": "One Way Street",
+"creator": "Pharah"
+},
+  "3-4":
+{
+"artist": "",
+"song": "MO-X EMOMOMO",
+"creator": ""
+},
+  "3-5":
+{
+"artist": "",
+"song": "XI-X It Go",
+"creator": ""
+}
+}

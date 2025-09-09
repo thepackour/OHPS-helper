@@ -52,7 +52,8 @@ CREATE TABLE IF NOT EXISTS level_clears (
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(level_id) REFERENCES levels(id)
 );''',
-'''CREATE TABLE IF NOT EXISTS quest_clears (
+'''
+CREATE TABLE IF NOT EXISTS quest_clears (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id VARCHAR(255),
     quest_id INT,
@@ -60,13 +61,21 @@ CREATE TABLE IF NOT EXISTS level_clears (
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(quest_id) REFERENCES quests(id)
 );''',
-'''CREATE TABLE IF NOT EXISTS collab_quest_progress (
+'''
+CREATE TABLE IF NOT EXISTS collab_quest_progress (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     level_clear_id INT,
     part VARCHAR(255) NOT NULL,
     video VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(level_clear_id) REFERENCES level_clears(id)
+);''',
+'''
+CREATE TABLE IF NOT EXISTS challenge_submission (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id VARCHAR(255) NOT NULL,
+    level VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );''')
 
 def create_table():
